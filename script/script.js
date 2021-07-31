@@ -1,65 +1,86 @@
-var dx ;
-var dy ;
-var px ;
-var py ;
-var vel;
+var mJdx=0;
+var mJdy=0;
+var mJpx=0;
+var mJpy=0;
+var mJvel=10;
+var mObdx=1;
+var mObdy=1;
+var mObpx=0;
+var mObpy=0;
+var mObvel=2;
 var tecla;
+var jog;
+var obst1;
 
-function inicio(){
-     dx= 0 ;
-     dy= 0 ;
-     px= 0 ;
-     py= 0 ;
-    vel= 10;
-    obj=document.getElementById('obst1');
+    jog=document.getElementById('jog');
+    obst1=document.getElementById('obst1');
     document.addEventListener('keydown', teclaDw);
     window.addEventListener('keyup', teclaUp);
-    tmp = setInterval(enterFrame , 20);
+    timeMovePlayer = setInterval(enterFrame , 20);
+
+    obst1=document.getElementById('obst1');
+   // timeMoveObst=setInterval(moveObst, 20)
+
+
+    moveObst();
+
+function moveObst(){
+    mObpy+= mObdy*mObvel; 
+    obst1.style.top=mObpy+"px";
+    if(mObpy > 520){
+    mObdy=-1;
+    console.log('dentro if'+ mObdy);
+
+    }else if(mObpy <  0){
+        mObdy=1;
+        console.log('dentro else if' + mObdy);
+    }
+   
+
+   anima=requestAnimationFrame(moveObst)
+ 
 }
-function teclaDw(){
+
+function teclaDw(){  
      tecla=event.key
     switch(tecla){
         case 'ArrowDown': 
-            dy+=1;
+            mJdy+=1;
         break;
         case 'ArrowUp':
-            dy+=-1;           
+            mJdy+=-1;           
         break;
         case 'ArrowRight':
-            dx+=1;           
+            mJdx+=1;           
         break;
         case 'ArrowLeft' :
-            dx+=-1          
-             }
-             
+            mJdx+=-1          
+             }    
 }
 function teclaUp(){
      tecla=event.key
     switch(tecla){
         case 'ArrowDown': 
-            dy+=0;
+            mJdy+=0;
         break;
         case 'ArrowUp':
-            dy+=0;           
+            mJdy+=0;           
         break;
         case 'ArrowRight':
-            dx+=0;           
+            mJdx+=0;           
         break;
         case 'ArrowLeft' :
-            dx+=0;          
+            mJdx+=0;          
              }
              console.log(tecla);
 }
-
 function enterFrame(){
-    
-    px=dx*vel;
-    py=dy*vel;
-    obj.style.left = px+'px';
-    obj.style.top = py+'px';
+    mJpx=mJdx*mJvel;
+    mJpy=mJdy*mJvel;
+    jog.style.left = mJpx+'px';
+    jog.style.top = mJpy+'px';
   
 }
 
 
 
-window.addEventListener('load',inicio);

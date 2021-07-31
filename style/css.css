@@ -5,17 +5,29 @@ html{    margin-top: 30px;    }
         margin: auto;
         position: relative;
         justify-content: space-evenly;
-        background-color: rgb(115, 70, 119);
+        background-color: rgb(141, 238, 209);
         max-width: 1060px;
         height: 550px;
         cursor: pointer;
+    }
+    #telaJogo{
+        position: relative;
+        max-width: 1060px;
+        height: 550px;
        
+    }
+    #jog{
+        width: 30px;
+        height: 30px;
+        position: relative;
+        background-color: rgb(230, 255, 1);
+        border: solid black 2px;
     }
     #obst1{
         width: 30px;
         height: 30px;
         position: relative;
-
         background-color: red;
         border: solid black 2px;
+        left: 200px;
     }
