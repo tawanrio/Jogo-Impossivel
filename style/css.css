@@ -22,12 +22,84 @@ html{    margin-top: 30px;    }
         position: relative;
         background-color: rgb(230, 255, 1);
         border: solid black 2px;
+        
     }
     #obst1{
-        width: 30px;
-        height: 30px;
-        position: relative;
+        width: 25px;
+        height: 25px;
+        position: absolute;
         background-color: red;
         border: solid black 2px;
-        left: 200px;
+        left: 150px;
+        border-radius: 100%;
     }
+    #obst2{
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        background-color: red;
+        border: solid black 2px;
+        left: 250px;
+        border-radius: 100%;
+        
+    }
+    #obst3{
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        background-color: red;
+        border: solid black 2px;
+        left: 350px;
+        border-radius: 100%;
+
+    }
+    #obst4{
+        width: 25px;
+        height: 25px;;
+        position: absolute;
+        background-color: red;
+        border: solid black 2px;
+        left: 450px;
+        border-radius: 100%;
+
+    }
+    #obst5{
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        background-color: red;
+        border: solid black 2px;
+        left: 550px;
+        border-radius: 100%;
+
+    }
+    #obst6{
+        width: 25px;
+        height: 25px;;
+        position: absolute;
+        background-color: red;
+        border: solid black 2px;
+        left: 650px;
+        border-radius: 100%;
+
+    }
+    #obst7{
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        background-color: red;
+        border: solid black 2px;
+        left: 750px;
+        border-radius: 100%;
+    }
+    #obst8{
+        width: 25px;
+        height: 25px;;
+        position: absolute;
+        background-color: red;
+        border: solid black 2px;
+        left: 850px;
+        border-radius: 100%;
+
+    }
+ 
