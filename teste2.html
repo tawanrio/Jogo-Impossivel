@@ -1,0 +1,167 @@
+<html>
+ <head>
+  <script type="application/javascript">
+
+    function teste() {
+        var verificaY = false;
+       var verificaX = false;
+       var a1 = 50;
+       var l1 = 50;
+       var  pos = posicaoNoCanvas();
+       var x1 = pos[0];
+       var y1 = pos[1];
+       var  a2 = 50;
+       var  l2 = 60;
+       var  pos = posicaoNoCanvas();
+       var  x2 = pos[0];
+       var  y2 = pos[1];
+      var canvas = document.getElementById("canvas");
+
+
+    var jogDireX=0;
+    var jogDireY=25;
+    var jogPosiX=0;
+    var jogPosiY=0;
+    var jogVel=10;
+    var jog;
+    jog=document.getElementById('jog');
+    document.addEventListener('keydown', teclaDw);
+    window.addEventListener('keyup', teclaUp);
+    timeMovePlayer = setInterval(enterFrame , 20);
+
+
+function enterFrame(){
+    var positionJ = jogPosiX + jogPosiY
+    jog;
+    jogPosiX=jogDireX*jogVel;
+    jogPosiY=jogDireY*jogVel;
+    
+  
+  
+}
+function teclaDw(){  
+     tecla=event.key
+    switch(tecla){
+        case 'ArrowDown': 
+            jogDireY+=1;
+        break;
+        case 'ArrowUp':
+            jogDireY+=-1;           
+        break;
+        case 'ArrowRight':
+            jogDireX+=1;           
+        break;
+        case 'ArrowLeft' :
+            jogDireX+=-1   
+        break;
+        case 'Arrowleft' & 'ArrowDown':
+            jogDireX+=-1 
+            jogDireY+=1;
+        break;
+        case 'ArrowRight' & 'ArrowDown':
+            jogDireX+=1;
+            jogDireY+=1;
+        break;
+        case 'Arrowleft' & 'ArrowUp':
+            jogDireX+=-1
+            jogDireY+=-1; 
+            
+        break;
+        case 'ArrowRight' & 'ArrowUp':
+            jogDireX+=1;
+            jogDireY+=-1; 
+        break;
+             
+             }    
+             console.log(tecla);
+}
+function teclaUp(){
+     tecla=event.key
+    switch(tecla){
+        case 'ArrowDown': 
+        jogDireY+=0;
+        break;
+        case 'ArrowUp':
+         jogDireY+=0;           
+        break;
+        case 'ArrowRight':
+         jogDireX+=0;           
+        break;
+        case 'ArrowLeft' :
+            jogDireX+=0;          
+             }
+            
+}
+
+
+      
+      if (canvas.getContext) {
+        var ctx = canvas.getContext("2d");
+      
+        ctx.fillStyle = "rgb(200,0,0)";
+        ctx.fillRect (x1,y1,50,50);
+    
+        ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+        ctx.fillRect (x2,y2,50,50);
+        
+        
+
+          }
+
+          function posicaoNoCanvas(){
+        meuX = Math.floor(Math.random()*300);
+        meuY = Math.floor(Math.random()*300);
+        return [meuX,meuY];
+
+    }
+       
+logica();
+    
+    function logica(){
+        let Rx = x2 - x1;
+        let Ry = y2 - y1;
+        
+    
+
+         if(Ry >= 0){
+             Ry = Math.abs(Ry);
+             if(a1 > Ry){
+                verificaY = true;
+            }
+        }else{
+            Ry = Math.abs(Ry);
+            if(a2 > Ry){
+                verificaY = true;
+            }
+        }
+
+        if(Rx >= 0){
+             Rx = Math.abs(Rx);
+             if(l1 > Rx){
+                verificaX = true;
+            }
+        }else{
+            Rx = Math.abs(Rx);
+            if(l2 > Rx){
+                verificaX = true;
+            }
+        }
+
+        if(verificaX && verificaY == true){
+            alert('Alerta de colisão')
+            verificaX = false;
+            verificaY = false;
+        }
+    }
+    }
+
+  </script>
+ </head>
+ <body onload="teste()">
+    
+   <canvas id="canvas" width="600" height="600">
+       
+   </canvas>
+   
+ </body>
+</html>

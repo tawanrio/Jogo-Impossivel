@@ -1,3 +1,5 @@
+function onload(){
+    
 var jogDireX=0;
 var jogDireY=25;
 var jogPosiX=0;
@@ -183,7 +185,7 @@ function teclaUp(){
 }
 function enterFrame(){
     var positionJ = jogPosiX + jogPosiY
-var positionOb = obstPosiX + obstPosiY
+    var positionOb = obstPosiX + obstPosiY
     if(positionJ == positionOb){
         
     }
@@ -197,3 +199,4 @@ var positionOb = obstPosiX + obstPosiY
 
 
 
+}
