@@ -1,5 +1,8 @@
-function onload(){
-    
+var verificaX,verifica2X, verificaY,verifica2Y = false;
+
+var vencerPosiX=1000;
+var vencerPosiY=225;
+
 var jogDireX=0;
 var jogDireY=25;
 var jogPosiX=0;
@@ -12,13 +15,13 @@ var obstDireX=1;
 var obstDireY=1;
 var obstPosiX=0;
 var obstPosiY=0;
-var obstVel=2;
+var obstVel=5;
 
 var obst2DireX=1;
 var obst2DireY=1;
 var obst2PosiX=0;
 var obst2PosiY=520;
-var obst2Vel=2;
+var obst2Vel=3;
 /*
 var obst3DireX=1;
 var obst3DireY=1;
@@ -32,12 +35,11 @@ var obst4PosiX=0;
 var obst4PosiY=520;
 var obst4Vel=2;
 */
-var tecla;
-var jog;
-var obst1;
-var obst2;
+var tecla , jog , obst1 , obst2;
+
 
     jog=document.getElementById('jog');
+    vencer=document.getElementById('vencer');
     obst1=document.getElementById('obst1');
     obst2=document.getElementById('obst2');
     obst3=document.getElementById('obst3');
@@ -48,17 +50,20 @@ var obst2;
 
     document.addEventListener('keydown', teclaDw);
     window.addEventListener('keyup', teclaUp);
-    timeMovePlayer = setInterval(enterFrame , 20);
-
+    timeMovePlayer = setInterval(enterFrame , 40);
+    timeLogica = setInterval(logica, 100);
+    timeColisao = setInterval(verificaColisao, 100);
     obst1=document.getElementById('obst1');
    // timeMoveObst=setInterval(moveObst, 20)
 
-
+   vencer.style.left = vencerPosiX+'px';
+   vencer.style.top = vencerPosiY+'px';
     moveObst();
     moveObst2();/*
     moveObst3();
     moveObst4();
 */
+
 function moveObst(){
     obstPosiY+= obstDireY*obstVel; 
     obst1.style.top=obstPosiY+"px";
@@ -164,7 +169,7 @@ function teclaDw(){
         break;
              
              }    
-             console.log(tecla);
+             
 }
 function teclaUp(){
      tecla=event.key
@@ -194,9 +199,138 @@ function enterFrame(){
     
     jog.style.left = jogPosiX+'px';
     jog.style.top = jogPosiY+'px';
+
+    verificaX = false;
+    verificaY = false;   
+    verifica2X = false;
+    verifica2Y = false;  
+    
   
 }
 
 
 
+function logica(){
+    let Rx;
+    
+   if(jogPosiX < 180){
+        Rx = 140 - jogPosiX;
+   } 
+   else if(jogPosiX > 280 && jogPosiX < 380){
+         Rx = 340 - jogPosiX;
+   } 
+   else if(jogPosiX > 480 && jogPosiX < 580){
+      Rx = 540 - jogPosiX;
+   } 
+   else if(jogPosiX > 680 && jogPosiX < 780){
+    Rx = 740 - jogPosiX;
+  }  
+  
+    let Ry = obstPosiY - jogPosiY;
+    
+     if(Ry >= 0){
+         Ry = Math.abs(Ry);
+         if(30 > Ry){
+            verificaY = true;
+        }
+    }
+    else{
+        Ry = Math.abs(Ry);
+        if(25 > Ry){
+            verificaY = true;   
+        }
+    }
+    if(Rx >= 0){
+         Rx = Math.abs(Rx);
+         if(30 > Rx){
+            verificaX = true;        
+        }
+    }else{
+        Rx = Math.abs(Rx);
+        if(40 > Rx){
+            verificaX = true;       
+        } 
+    }
+
+
+
+    let R2x;
+if(jogPosiX > 180 && jogPosiX < 280){
+    R2x = 240 - jogPosiX;
+}
+else if(jogPosiX > 380 && jogPosiX < 480){
+    R2x = 440 - jogPosiX;
+}
+else if(jogPosiX > 580 && jogPosiX < 680){
+    R2x = 640 - jogPosiX;
+}
+else if(jogPosiX > 780 && jogPosiX < 980){
+    R2x = 840 - jogPosiX;
+} 
+
+let R2y = obst2PosiY - jogPosiY;
+    
+     if(R2y >= 0){
+         R2y = Math.abs(R2y);
+         if(30 > R2y){
+            verifica2Y = true;
+        }
+    }
+    else{
+        R2y = Math.abs(R2y);
+        if(25 > R2y){
+            verifica2Y = true;   
+        }
+    }
+    if(R2x >= 0){
+         R2x = Math.abs(R2x);
+         if(30 > R2x){
+            verifica2X = true; 
+                
+        }
+    }else{
+        R2x = Math.abs(R2x);
+        if(40 > R2x){
+            verifica2X = true;       
+        } 
+    }
+}
+
+
+function verificaColisao(){
+    if(verificaX && verificaY == true){
+    verificaX = false;
+    verificaY = false;
+    
+    jogDireX = 0;
+    jogDireY = 25;
+    jogPosiX=jogDireX*jogVel;
+    jogPosiY=jogDireY*jogVel;
+    jog.style.left = jogPosiX+'px';
+    jog.style.top = jogPosiY+'px';
+
+}
+if(verifica2X && verifica2Y == true){
+    verificaX = false;
+    verificaY = false;
+
+    jogDireX = 0;
+    jogDireY = 25;
+    jogPosiX=jogDireX*jogVel;
+    jogPosiY=jogDireY*jogVel;
+    jog.style.left = jogPosiX+'px';
+    jog.style.top = jogPosiY+'px';
+
+}
+    let fimVencerY = vencerPosiY+70;
+    let fimVencerX = vencerPosiX+ 70;
+    if(jogPosiX >= vencerPosiX && jogPosiY >= vencerPosiY && jogPosiY < fimVencerX && jogPosiY < fimVencerY){
+        alert('vencedor')
+        jogDireX = 0;
+    jogDireY = 25;
+    jogPosiX=jogDireX*jogVel;
+    jogPosiY=jogDireY*jogVel;
+    jog.style.left = jogPosiX+'px';
+    jog.style.top = jogPosiY+'px';
+    }
 }
