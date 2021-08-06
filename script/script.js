@@ -58,7 +58,7 @@ function novaFase(){
         const vencer = document.createElement("div");
 
         let nivel = [id]
-        novoNivel.id = ;
+        novoNivel.id = id;
        
         novoNivel.className = 'telaJogo'
         vencer.id = 'vencer';
@@ -66,7 +66,7 @@ function novaFase(){
         document.querySelector('#container').insertAdjacentElement('beforeend', novoNivel);
         document.querySelector('#container').insertAdjacentElement('beforeend', vencer);
 
-        style.display = 'none';
+        //style.display = 'none';
         vencerPosiXeY = [vencerX,vencerY] ;
         
         vencer.style.left = vencerPosiXeY[0]+'px';
