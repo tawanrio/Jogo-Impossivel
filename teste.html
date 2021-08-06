@@ -3,30 +3,151 @@
 <head>
     <title>Document</title>
 
-    <style>
-        canvas{
-            background-color: rgb(221, 177, 177);
-            width: 900px;
-            height: 500px;
-            display: block;
-            margin: auto;
-        }
-        rect{
-            background-color: red;
-        }
-    </style>
+    <link rel="stylesheet" href="style/css.css">
 </head>
 <body>
-    <canvas id="canvas"></canvas>
-    
+ 
+    <div id="container">
+        <div id="telaJogo">
+            <div class='obstaculos' id='obst1'></div>
+            <div class='obstaculos' id='obst2'></div>
+            <div class='obstaculos' id='obst3'></div>
+            <div class='obstaculos' id='obst4'></div>
+            <div class='obstaculos' id='obst5'></div>
+            <div class='obstaculos' id='obst6'></div>
+            <div class='obstaculos' id='obst7'></div>
+            <div class='obstaculos' id='obst8'></div>
+            <div id="jog"> </div>
+            <div id='vencer'></div>
+        </div>
+    </div>   
 
     <script>
-        jog1();
-       campo = document.getElementById('canvas');
+    var verificaColisaoX , verificaColisao2X , verificaColisaoY , verificaColisao2Y = false;
+    var limiteCampoCima = -1;
+    var limiteCampoBaixo = 519;
+    var limiteCampoEsq = -1;
+    var limiteCampoDir = 1026;
+    var vencerPosiXeY=[1000,200];
 
-        function jog1(){
-        rect(20,20,10,10);
+    var tamanhoJogador = [30, 30];
+    var tamanhoObstaculo = [25, 25];
+
+    var obstaculoPosiX =[150,250,350,450,550,650,750,850,950];
+    var obstaculoPosiY=[0,520];
+
+    var obstaculoDireX=[1,1]
+    var obstaculoDireY=[1,1]
+
+    var obstaculoVel=[4,3,10];
+    var  Ry= 5;
+    vencer.style.left = vencerPosiXeY[0]+'px';
+    vencer.style.top = vencerPosiXeY[1]+'px';
+        var obst= new novoObstaculo();
+        
+//parametros 1 - posiX 2- posiY
+obst.newObst(150,0,0,1,0);
+obst.newObst(250,520,0,1,0);
+obst.newObst(0,150,1,1,0);
+obst.newObst(0,200,1,0,2);
+
+        setInterval(console.log(Ry),1000)
+
+function novoObstaculo(){
+    
+    this.newObst = function(posiX,posiY,direX,direY,vel){
+    const novoObst = document.createElement("div");
+    novoObst.className = 'obstaculos';
+    document.querySelector('#container').insertAdjacentElement('beforeend', novoObst);
+    novoObst.style.left=posiX +"px";
+    novoObst.style.top=posiY +"px";
+     moveObst(posiX,posiY,direX,direY,vel);
+
+   function moveObst(){
+  
+    
+    let Rx;
+    posiY+= direY*obstaculoVel[vel]; 
+    posiX+= direX*obstaculoVel[vel]; 
+   
+   novoObst.style.left=posiX+"px";
+    novoObst.style.top=posiY+"px";
+    if(posiY > limiteCampoBaixo){
+    direY=-1;
+    }else if(posiY <  limiteCampoCima){
+        direY=1;      
+    }
+    if(posiX > limiteCampoDir){
+    direX=-1;
+    }else if(posiX <  limiteCampoEsq){
+        direX=1;     
+    }
+   
+obstaculoPosiY[0] - jogPosiY;
+
+    if(Ry >= 0){
+         Ry = Math.abs(Ry);
+         if(tamanhoJogador[1] > Ry){
+            verificaColisaoY = true;
         }
+    }
+    else{
+        Ry = Math.abs(Ry);
+        if(tamanhoObstaculo[1] > Ry){
+            verificaColisaoY = true;   
+        }
+    }
+    if(Rx >= 0){
+         Rx = Math.abs(Rx);
+         if(tamanhoJogador[0] > Rx){
+            verificaColisaoX = true;        
+        }
+    }else{
+        Rx = Math.abs(Rx);
+        if(tamanhoObstaculo[0] > Rx){
+            verificaColisaoX = true;       
+        } 
+    }
+
+    if(verificaColisaoX && verificaColisaoY || verificaColisao2X && verificaColisao2Y == true ){
+        verificaColisaoX = false;
+        verificaColisaoY = false;
+        
+        jogDireX = 0;
+        jogDireY = 25;
+        jogPosiX=jogDireX*jogVel;
+        jogPosiY=jogDireY*jogVel;
+        jog.style.left = jogPosiX+'px';
+        jog.style.top = jogPosiY+'px';
+    
+    }
+   anima=requestAnimationFrame(moveObst)
+    }
+}
+}
+
+
+
+/*
+function moveObst(){
+
+    //posicaoObstX();
+
+    obstaculoPosiY[0]+= obstaculoDireY[0]*obstaculoVel[0]; 
+    
+    obstaculos[0].style.top=obstaculoPosiY[0]+"px";
+   
+    if(obstaculoPosiY[0] > limiteCampoBaixo){
+    obstaculoDireY[0]=-1;
+ 
+
+    }else if(obstaculoPosiY[0] <  limiteCampoCima){
+        obstaculoDireY[0]=1;
+              
+    }
+   
+   anima=requestAnimationFrame(moveObst)
+ }*/
     </script>
 </body>
 </html>
