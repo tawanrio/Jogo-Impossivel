@@ -31,7 +31,7 @@ html{    margin-top: 30px;    }
         position: absolute;
         background-color: red;
         border: solid black 2px;
-        left: 150px;
+       
       
     }
     #obst2{
@@ -40,7 +40,7 @@ html{    margin-top: 30px;    }
         position: absolute;
         background-color: red;
         border: solid black 2px;
-        left: 250px;
+     
         
         
     }
@@ -50,7 +50,7 @@ html{    margin-top: 30px;    }
         position: absolute;
         background-color: red;
         border: solid black 2px;
-        left: 350px;
+        
         
 
     }
@@ -60,7 +60,7 @@ html{    margin-top: 30px;    }
         position: absolute;
         background-color: red;
         border: solid black 2px;
-        left: 450px;
+       
         
 
     }
@@ -70,7 +70,7 @@ html{    margin-top: 30px;    }
         position: absolute;
         background-color: red;
         border: solid black 2px;
-        left: 550px;
+       
         
 
     }
@@ -80,7 +80,7 @@ html{    margin-top: 30px;    }
         position: absolute;
         background-color: red;
         border: solid black 2px;
-        left: 650px;
+     
         
 
     }
@@ -90,7 +90,7 @@ html{    margin-top: 30px;    }
         position: absolute;
         background-color: red;
         border: solid black 2px;
-        left: 750px;
+        
         
     }
     #obst8{
@@ -99,7 +99,7 @@ html{    margin-top: 30px;    }
         position: absolute;
         background-color: red;
         border: solid black 2px;
-        left: 850px;
+      
     }
 
     #vencer{
@@ -107,8 +107,7 @@ html{    margin-top: 30px;    }
         height: 60px;
         background-color: green;
         position: relative;
-        left: 94.3%;
-        top: 43%;
+    
        
     }
  

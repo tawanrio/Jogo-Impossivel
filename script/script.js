@@ -1,83 +1,85 @@
-var verificaX,verifica2X, verificaY,verifica2Y = false;
+var verificaColisaoX , verificaColisao2X , verificaColisaoY , verificaColisao2Y = false;
+var flechaCima , flechaEsq , flechaDir , flechaBaixo , tecla , jog ;
+var limiteCampoCima = -1;
+var limiteCampoBaixo = 519;
+var limiteCampoEsq = -1;
+var limiteCampoDir = 1026;
+var vencerPosiXeY=[1000,200];
 
-var vencerPosiX=1000;
-var vencerPosiY=225;
-
+var tamanhoJogador = [30, 30];
+var tamanhoObstaculo = [25, 25];
 var jogDireX=0;
 var jogDireY=25;
 var jogPosiX=0;
 var jogPosiY=0;
-var jogVel=10;
+var jogVel=5;
+
+
+var obstaculoPosiX =[150,250,350,450,550,650,750,850,950];
+var obstaculoPosiY=[0,520];
+
+var obstaculoDireX=[1,1]
+var obstaculoDireY=[1,1]
+
+var obstaculoVel=[0.4,3];
 
 
 
-var obstDireX=1;
-var obstDireY=1;
-var obstPosiX=0;
-var obstPosiY=0;
-var obstVel=5;
 
-var obst2DireX=1;
-var obst2DireY=1;
-var obst2PosiX=0;
-var obst2PosiY=520;
-var obst2Vel=3;
-/*
-var obst3DireX=1;
-var obst3DireY=1;
-var obst3PosiX=0;
-var obst3PosiY=0;
-var obst3Vel=2;
-
-var obst4DireX=1;
-var obst4DireY=1;
-var obst4PosiX=0;
-var obst4PosiY=520;
-var obst4Vel=2;
-*/
-var tecla , jog , obst1 , obst2;
-
-
+capturaElementosDom();
+function capturaElementosDom(){
+    obstaculos=document.querySelectorAll('.obstaculos');
+  
     jog=document.getElementById('jog');
-    vencer=document.getElementById('vencer');
-    obst1=document.getElementById('obst1');
-    obst2=document.getElementById('obst2');
-    obst3=document.getElementById('obst3');
-    obst4=document.getElementById('obst4');
-    obst5=document.getElementById('obst5');
-    obst6=document.getElementById('obst6');
-    obst7=document.getElementById('obst7');
+    
+}
+console.log(obstaculos);
+function posicaoObstX(){
+  
+    obstaculos[0].style.left=obstaculoPosiX[0] +"px";
+    obstaculos[1].style.left=obstaculoPosiX[1] +"px";
+    obstaculos[2].style.left=obstaculoPosiX[2] +"px";
+    obstaculos[3].style.left=obstaculoPosiX[3] +"px";
+    obstaculos[4].style.left=obstaculoPosiX[4] +"px";
+    obstaculos[5].style.left=obstaculoPosiX[5] +"px";
+    obstaculos[6].style.left=obstaculoPosiX[6] +"px";
+    obstaculos[7].style.left=obstaculoPosiX[7] +"px";
+}
 
-    document.addEventListener('keydown', teclaDw);
-    window.addEventListener('keyup', teclaUp);
-    timeMovePlayer = setInterval(enterFrame , 40);
-    timeLogica = setInterval(logica, 100);
-    timeColisao = setInterval(verificaColisao, 100);
-    obst1=document.getElementById('obst1');
-   // timeMoveObst=setInterval(moveObst, 20)
+    
+   
+    vencer.style.left = vencerPosiXeY[0]+'px';
+    vencer.style.top = vencerPosiXeY[1]+'px';
+    
 
-   vencer.style.left = vencerPosiX+'px';
-   vencer.style.top = vencerPosiY+'px';
+    window.addEventListener('keydown', capturaTeclaPress);
+    window.addEventListener('keyup', capturaTeclaSolt);
+    timeMovePlayer = setInterval(enterFrame , 20);
+  
+    
+
+
     moveObst();
-    moveObst2();/*
-    moveObst3();
-    moveObst4();
-*/
+    moveObst2();
+    
 
 function moveObst(){
-    obstPosiY+= obstDireY*obstVel; 
-    obst1.style.top=obstPosiY+"px";
-    obst3.style.top=obstPosiY+"px";
-    obst5.style.top=obstPosiY+"px";
-    obst7.style.top=obstPosiY+"px";
-    if(obstPosiY > 520){
-    obstDireY=-1;
+    posicaoObstX();
+
+    obstaculoPosiY[0]+= obstaculoDireY[0]*obstaculoVel[0]; 
+    
+    obstaculos[0].style.top=obstaculoPosiY[0]+"px";
+    obstaculos[2].style.top=obstaculoPosiY[0]+"px";
+    obstaculos[4].style.top=obstaculoPosiY[0]+"px";
+    obstaculos[6].style.top=obstaculoPosiY[0]+"px";
+
+    if(obstaculoPosiY[0] > limiteCampoBaixo){
+    obstaculoDireY[0]=-1;
  
 
-    }else if(obstPosiY <  0){
-        obstDireY=1;
-       
-       
+    }else if(obstaculoPosiY[0] <  limiteCampoCima){
+        obstaculoDireY[0]=1;
+              
     }
    
    anima=requestAnimationFrame(moveObst)
@@ -85,252 +87,254 @@ function moveObst(){
 
  function moveObst2(){
     
-    obst2PosiY+= obst2DireY*obst2Vel; 
-    obst2.style.top=obst2PosiY+"px";
-    obst4.style.top=obst2PosiY+"px";
-    obst6.style.top=obst2PosiY+"px";
-    obst8.style.top=obst2PosiY+"px";
-    
-    if(obst2PosiY > 520){
-    obst2DireY=-1;
+
+
+    obstaculoPosiY[1]+= obstaculoDireY[1]*obstaculoVel[1]; 
+ 
+    obstaculos[1].style.top=obstaculoPosiY[1]+"px";
+    obstaculos[3].style.top=obstaculoPosiY[1]+"px";
+    obstaculos[5].style.top=obstaculoPosiY[1]+"px";
+    obstaculos[7].style.top=obstaculoPosiY[1]+"px";
     
 
-    }else if(obst2PosiY <  0){
-        obst2DireY=1;
-       
-    }
-   
+
+    if(obstaculoPosiY[1] > limiteCampoBaixo){
+        obstaculoDireY[1]=-1;
+    
+        }else if(obstaculoPosiY[1] <  limiteCampoCima){
+            obstaculoDireY[1]=1;
+        }
    anima=requestAnimationFrame(moveObst2)
  }
-/*
- function moveObst3(){
-    obst3PosiY+= obst3DireY*obst3Vel; 
-    obst3.style.top=obst3PosiY+"px";
-    if(obst3PosiY > 520){
-    obst3DireY=-1;
-    console.log('dentro if'+ obst3DireY);
 
-    }else if(obst3PosiY <  0){
-        obst3DireY=1;
-        console.log('dentro else if' + obst3PosiY);
-        
+function validaMovimento(){
+    switch(flechaBaixo){
+        case true:
+            jogDireY+=1;
+        break;
+        case false:
+            jogDireY+=0;
     }
-   
-   anima=requestAnimationFrame(moveObst3)
- }
-
- function moveObst4(){
-    
-    obst4PosiY+= obst4DireY*obst4Vel; 
-    obst4.style.top=obst4PosiY+"px";
-    if(obst4PosiY > 520){
-    obst4DireY=-1;
-    console.log('dentro isf'+ obst4DireY);
-
-    }else if(obst4PosiY <  0){
-        obst4DireY=1;
-        console.log('dentro else if' + obst4PosiY);
+    switch(flechaEsq){
+        case true:
+            jogDireX+=-1;
+        break;
+        case false:
+            jogDireX+=0;  
     }
-   
-   anima=requestAnimationFrame(moveObst4)
- }*/
-
-function teclaDw(){  
-     tecla=event.key
-    switch(tecla){
-        case 'ArrowDown': 
-            jogDireY+=1;
+    switch(flechaCima){
+        case true:
+            jogDireY+=-1;
         break;
-        case 'ArrowUp':
-            jogDireY+=-1;           
-        break;
-        case 'ArrowRight':
-            jogDireX+=1;           
-        break;
-        case 'ArrowLeft' :
-            jogDireX+=-1   
-        break;
-        case 'Arrowleft' & 'ArrowDown':
-            jogDireX+=-1 
-            jogDireY+=1;
-        break;
-        case 'ArrowRight' & 'ArrowDown':
+        case false:
+            jogDireY+=0;  
+    }
+    switch(flechaDir){
+        case true:
             jogDireX+=1;
-            jogDireY+=1;
         break;
-        case 'Arrowleft' & 'ArrowUp':
-            jogDireX+=-1
-            jogDireY+=-1; 
-            
-        break;
-        case 'ArrowRight' & 'ArrowUp':
-            jogDireX+=1;
-            jogDireY+=-1; 
-        break;
-             
-             }    
-             
+        case false:
+            jogDireX+=0;
+    }
 }
-function teclaUp(){
-     tecla=event.key
-    switch(tecla){
-        case 'ArrowDown': 
-        jogDireY+=0;
-        break;
-        case 'ArrowUp':
-         jogDireY+=0;           
-        break;
-        case 'ArrowRight':
-         jogDireX+=0;           
-        break;
-        case 'ArrowLeft' :
-            jogDireX+=0;          
-             }
+ function capturaTeclaPress(){  
+    tecla=event.key
+   switch(tecla){
+       case 'ArrowDown': 
+       case 's':
+          flechaBaixo = true;
+       break;
+       case 'ArrowUp':
+        case 'w':
+        flechaCima = true;           
+       break;
+       case 'ArrowRight':
+        case 'd':
+           flechaDir = true;          
+       break;
+       case 'ArrowLeft' :
+        case 'a':
+           flechaEsq = true; 
+       break;
+       
+            }    
             
 }
-function enterFrame(){
-    var positionJ = jogPosiX + jogPosiY
-    var positionOb = obstPosiX + obstPosiY
-    if(positionJ == positionOb){
-        
-    }
+function capturaTeclaSolt(){
+    tecla=event.key
+   switch(tecla){
+       case 'ArrowDown' : 
+       case 's':
+          flechaBaixo = false;
+       break;
+       case 'ArrowUp':
+       case 'w':
+          flechaCima = false;        
+       break;
+       case 'ArrowRight':
+       case 'd':
+          flechaDir = false;        
+       break;
+       case 'ArrowLeft' :
+        case 'a':
+          flechaEsq = false;          
+            }
+           
+}
+function attPosiJog(){
     jogPosiX=jogDireX*jogVel;
     jogPosiY=jogDireY*jogVel;
     
     jog.style.left = jogPosiX+'px';
     jog.style.top = jogPosiY+'px';
+}
+function enterFrame(){
+    validaMovimento();
+    attPosiJog();
+    verificaColisao();
+    verificaVencedor();
+    verificaColisaoX = false;
+    verificaColisaoY = false;   
+    verificaColisao2X = false;
+    verificaColisao2Y = false;  
 
-    verificaX = false;
-    verificaY = false;   
-    verifica2X = false;
-    verifica2Y = false;  
-    
-  
+    limitaCampo(); 
 }
 
 
 
-function logica(){
+function logicaColisao(){
     let Rx;
-    
-   if(jogPosiX < 180){
-        Rx = 140 - jogPosiX;
+   if(jogPosiX < obstaculoPosiX[0]+30 ){
+        Rx = obstaculoPosiX[0] - jogPosiX;
    } 
-   else if(jogPosiX > 280 && jogPosiX < 380){
-         Rx = 340 - jogPosiX;
+   else if(jogPosiX > obstaculoPosiX[1]+30  && jogPosiX < obstaculoPosiX[2]+30 ){
+         Rx = obstaculoPosiX[2]  - jogPosiX;
    } 
-   else if(jogPosiX > 480 && jogPosiX < 580){
-      Rx = 540 - jogPosiX;
+   else if(jogPosiX > obstaculoPosiX[3]+30  && jogPosiX < obstaculoPosiX[4]+30 ){
+      Rx = obstaculoPosiX[4]  - jogPosiX;
    } 
-   else if(jogPosiX > 680 && jogPosiX < 780){
-    Rx = 740 - jogPosiX;
+   else if(jogPosiX > obstaculoPosiX[5]+30  && jogPosiX < obstaculoPosiX[6]+30 ){
+    Rx = obstaculoPosiX[6]  - jogPosiX;
   }  
   
-    let Ry = obstPosiY - jogPosiY;
-    
+    let Ry = obstaculoPosiY[0] - jogPosiY;
      if(Ry >= 0){
          Ry = Math.abs(Ry);
-         if(30 > Ry){
-            verificaY = true;
+         if(tamanhoJogador[1] > Ry){
+            verificaColisaoY = true;
         }
     }
     else{
         Ry = Math.abs(Ry);
-        if(25 > Ry){
-            verificaY = true;   
+        if(tamanhoObstaculo[1] > Ry){
+            verificaColisaoY = true;   
         }
     }
     if(Rx >= 0){
          Rx = Math.abs(Rx);
-         if(30 > Rx){
-            verificaX = true;        
+         if(tamanhoJogador[0] > Rx){
+            verificaColisaoX = true;        
         }
     }else{
         Rx = Math.abs(Rx);
-        if(40 > Rx){
-            verificaX = true;       
+        if(tamanhoObstaculo[0] > Rx){
+            verificaColisaoX = true;       
         } 
     }
 
-
-
     let R2x;
-if(jogPosiX > 180 && jogPosiX < 280){
-    R2x = 240 - jogPosiX;
+if(jogPosiX > obstaculoPosiX[0]+30 && jogPosiX < obstaculoPosiX[1]+30){
+    R2x = obstaculoPosiX[1]  - jogPosiX;
 }
-else if(jogPosiX > 380 && jogPosiX < 480){
-    R2x = 440 - jogPosiX;
+else if(jogPosiX > obstaculoPosiX[2]+30 && jogPosiX < obstaculoPosiX[3]+30){
+    R2x = obstaculoPosiX[3]  - jogPosiX;
 }
-else if(jogPosiX > 580 && jogPosiX < 680){
-    R2x = 640 - jogPosiX;
+else if(jogPosiX > obstaculoPosiX[4]+30 && jogPosiX < obstaculoPosiX[5]+30){
+    R2x = obstaculoPosiX[5]  - jogPosiX;
 }
-else if(jogPosiX > 780 && jogPosiX < 980){
-    R2x = 840 - jogPosiX;
+else if(jogPosiX > obstaculoPosiX[6]+30 && jogPosiX < obstaculoPosiX[7]+30){
+    R2x = obstaculoPosiX[7]  - jogPosiX;
 } 
 
-let R2y = obst2PosiY - jogPosiY;
+let R2y = obstaculoPosiY[1] - jogPosiY;
     
      if(R2y >= 0){
          R2y = Math.abs(R2y);
-         if(30 > R2y){
-            verifica2Y = true;
+         if(tamanhoJogador[1] > R2y){
+            verificaColisao2Y = true;
         }
     }
     else{
         R2y = Math.abs(R2y);
-        if(25 > R2y){
-            verifica2Y = true;   
+        if(tamanhoObstaculo[1] > R2y){
+            verificaColisao2Y = true;   
         }
     }
     if(R2x >= 0){
          R2x = Math.abs(R2x);
-         if(30 > R2x){
-            verifica2X = true; 
+         if(tamanhoJogador[0] > R2x){
+            verificaColisao2X = true; 
                 
         }
     }else{
         R2x = Math.abs(R2x);
-        if(40 > R2x){
-            verifica2X = true;       
+        if(tamanhoObstaculo[0] > R2x){
+            verificaColisao2X = true;       
         } 
     }
 }
 
-
 function verificaColisao(){
-    if(verificaX && verificaY == true){
-    verificaX = false;
-    verificaY = false;
-    
-    jogDireX = 0;
-    jogDireY = 25;
-    jogPosiX=jogDireX*jogVel;
-    jogPosiY=jogDireY*jogVel;
-    jog.style.left = jogPosiX+'px';
-    jog.style.top = jogPosiY+'px';
-
-}
-if(verifica2X && verifica2Y == true){
-    verificaX = false;
-    verificaY = false;
-
-    jogDireX = 0;
-    jogDireY = 25;
-    jogPosiX=jogDireX*jogVel;
-    jogPosiY=jogDireY*jogVel;
-    jog.style.left = jogPosiX+'px';
-    jog.style.top = jogPosiY+'px';
-
-}
-    let fimVencerY = vencerPosiY+70;
-    let fimVencerX = vencerPosiX+ 70;
-    if(jogPosiX >= vencerPosiX && jogPosiY >= vencerPosiY && jogPosiY < fimVencerX && jogPosiY < fimVencerY){
-        alert('vencedor')
+    logicaColisao();
+    if(verificaColisaoX && verificaColisaoY || verificaColisao2X && verificaColisao2Y == true ){
+        verificaColisaoX = false;
+        verificaColisaoY = false;
+        
         jogDireX = 0;
+        jogDireY = 25;
+        jogPosiX=jogDireX*jogVel;
+        jogPosiY=jogDireY*jogVel;
+        jog.style.left = jogPosiX+'px';
+        jog.style.top = jogPosiY+'px';
+    
+    }
+}
+function verificaVencedor(){
+    let fimVencerY = vencerPosiXeY[1]+75;
+    let fimVencerX = vencerPosiXeY[0]+70;
+    if(jogPosiX >= vencerPosiXeY[0] && jogPosiY >= vencerPosiXeY[1]+35 && jogPosiX < fimVencerX && jogPosiY < fimVencerY){
+        
+    jogDireX = 0;
     jogDireY = 25;
     jogPosiX=jogDireX*jogVel;
-    jogPosiY=jogDireY*jogVel;
+    jogPosiY=jogDireY*jogVel; 
     jog.style.left = jogPosiX+'px';
     jog.style.top = jogPosiY+'px';
+    
+    }  
+}
+
+
+function limitaCampo(){
+    if(jogPosiX > limiteCampoDir){
+        flechaDir = false;
+        jogPosiX = limiteCampoDir;   
+
+        jog.style.left = jogPosiX+'px';
+       
+    }else if(jogPosiX < limiteCampoEsq){
+        jogPosiX = limiteCampoEsq+1;   
+        jogDireX = limiteCampoEsq+1;  
+        jog.style.left = jogPosiX+'px';
+    }
+    if(jogPosiY > limiteCampoBaixo){
+       flechaBaixo = false;
+       jogPosiY = limiteCampoBaixo-1;        
+       jog.style.top = jogPosiY+'px';
+    }else if(jogPosiY < limiteCampoCima){
+        flechaCima = false;
+        jogPosiY = limiteCampoCima+1;   
+        jog.style.top = jogPosiY+'px';
     }
 }
