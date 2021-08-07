@@ -9,7 +9,7 @@ var jogadorVel=5;
 
 var obstaculoVel=[4,3,5];
 
-var criaElemento= new novaFase();
+var criaElemento = new novaFase();
 
 /*
             --------INSTRUÇÃO PARA CRIAR OBSTACULOS--------
@@ -18,7 +18,22 @@ var criaElemento= new novaFase();
 
 */
 
-criaElemento.newNivel(5,1000,210,function(){
+criaElemento.newNivel(1,1000,0,function(){
+    //fase Wallace
+  //  for(let i=1;i<5;i++){
+       // criaElemento.newObst(i*100,000,1,1,0);
+   //    criaElemento.newObst(i*100,100,0,1,1);
+        criaElemento.newObst(200,0,0,1,0);
+        criaElemento.newObst(400,550,0,1,0);
+
+    /*    criaElemento.newObst(i*100,300,1,1,2);
+        criaElemento.newObst(i*200,400,0,0,0);
+        criaElemento.newObst(i*100,500,1,1,1);
+    */ //  }
+});
+
+/*
+criaElemento.newNivel(1,1000,210,function(){
  
 criaElemento.newObst(150,0,0,1,0);  
 criaElemento.newObst(250,520,0,1,0);
@@ -39,17 +54,18 @@ criaElemento.newObst(1000,310,1,0,0);
 criaElemento.newObst(0,410,1,0,0);
 criaElemento.newObst(1000,510,1,0,0);
 
-});
+});*/
 criaElemento.newJogador();
 
 capturaElementosDom();
 window.addEventListener('keydown', capturaTeclaPress);
 window.addEventListener('keyup', capturaTeclaSolt);
 timeMovePlayer = setInterval(enterFrame , 20);
-
+/*
 document.getElementById('botao').addEventListener('click', function(){
     nivel1.style.display = 'none';
-})
+})*/
+
 
 function novaFase(){
     
@@ -57,10 +73,10 @@ function novaFase(){
         const novoNivel = document.createElement("div");
         const vencer = document.createElement("div");
 
-        let nivel = [id]
-        novoNivel.id = id;
+      //  let nivel = [id]
+       // novoNivel.id = id;
        
-        novoNivel.className = 'telaJogo'
+        novoNivel.className = 'telaJogo';
         vencer.id = 'vencer';
 
         document.querySelector('#container').insertAdjacentElement('beforeend', novoNivel);
@@ -78,7 +94,7 @@ function novaFase(){
     this.newJogador = function(){
         const novoJogador = document.createElement("div");
         novoJogador.id = 'jog';
-        document.querySelector('#container').insertAdjacentElement('beforeend', novoJogador);
+        document.querySelector('.telaJogo').insertAdjacentElement('beforeend', novoJogador);
     }
 
     this.newObst = function(posiX,posiY,direX,direY,vel){
