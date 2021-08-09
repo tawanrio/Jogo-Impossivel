@@ -2,8 +2,8 @@ var vencerPosiXeY=[];
 
 var tamanhoJogador = [30, 30];
 var tamanhoObstaculo = [25, 25];
-
-
+var novoNivel =[];
+var nNivel=[];
 
 var jogadorVel=5;
 
@@ -16,7 +16,7 @@ var criaElemento = new novaFase();
 
     Deve ser instanciado o objeto newObst 
 
-*/
+
 
 criaElemento.newNivel(1,1000,0,function(){
     //fase Wallace
@@ -29,9 +29,9 @@ criaElemento.newNivel(1,1000,0,function(){
     /*    criaElemento.newObst(i*100,300,1,1,2);
         criaElemento.newObst(i*200,400,0,0,0);
         criaElemento.newObst(i*100,500,1,1,1);
-    */ //  }
+     //  }
 });
-
+*/
 /*
 criaElemento.newNivel(1,1000,210,function(){
  
@@ -54,53 +54,88 @@ criaElemento.newObst(1000,310,1,0,0);
 criaElemento.newObst(0,410,1,0,0);
 criaElemento.newObst(1000,510,1,0,0);
 
-});*/
+});
+*/
 criaElemento.newJogador();
+
+criaElemento.newNivel(1000,400,function(){
+    
+    criaElemento.newObst(150,0,0,1,0); 
+   
+});
+
+criaElemento.newNivel(1000,0,function(){
+
+    
+    criaElemento.newObst(250,0,1,0,0); 
+    
+});
+
+
+var verf = false;
+
 
 capturaElementosDom();
 window.addEventListener('keydown', capturaTeclaPress);
 window.addEventListener('keyup', capturaTeclaSolt);
 timeMovePlayer = setInterval(enterFrame , 20);
-/*
-document.getElementById('botao').addEventListener('click', function(){
-    nivel1.style.display = 'none';
-})*/
+
+document.getElementById('chama').addEventListener('click', function(){
+    if(verf == true){
+    document.getElementById('0').style.display = 'none';
+    document.getElementById('1').style.display = 'block';
+    verf = false;
+}else if(verf == false){
+document.getElementById('0').style.display = 'block';
+document.getElementById('1').style.display = 'none';
+     verf = true;
+}
+
+})
 
 
 function novaFase(){
     
-    this.newNivel = function(id,vencerX,vencerY,callback){
-        const novoNivel = document.createElement("div");
+    this.elNovoNivel;
+    
+    this.newNivel = function(vencerX,vencerY,callback){
+
+        nNivel.push(nNivel.length);
+        
+        novoNivel[nNivel] = document.createElement("div");
+        this.elNovoNivel = novoNivel[nNivel];
         const vencer = document.createElement("div");
-
-      //  let nivel = [id]
-       // novoNivel.id = id;
-       
-        novoNivel.className = 'telaJogo';
+        
+        novoNivel[nNivel].id = nNivel;
+        novoNivel[nNivel].className = 'telaJogo';
         vencer.id = 'vencer';
-
-        document.querySelector('#container').insertAdjacentElement('beforeend', novoNivel);
-        document.querySelector('#container').insertAdjacentElement('beforeend', vencer);
-
-        //style.display = 'none';
+        
+        document.querySelector('#container').insertAdjacentElement('beforeend', novoNivel[nNivel]);
+        this.elNovoNivel.insertAdjacentElement('beforeend', vencer);
+        
+        novoNivel[nNivel].style.display = 'none';
         vencerPosiXeY = [vencerX,vencerY] ;
         
         vencer.style.left = vencerPosiXeY[0]+'px';
         vencer.style.top = vencerPosiXeY[1]+'px';
         
+        console.log(nNivel[nNivel]);
+      //  document.querySelector('.telaJogo').innerHTML = '';
         callback();
-
+       
+        
     }
     this.newJogador = function(){
         const novoJogador = document.createElement("div");
         novoJogador.id = 'jog';
-        document.querySelector('.telaJogo').insertAdjacentElement('beforeend', novoJogador);
+        document.querySelector('#container').insertAdjacentElement('beforeend', novoJogador);
     }
 
     this.newObst = function(posiX,posiY,direX,direY,vel){
     const novoObst = document.createElement("div");
     novoObst.className = 'obstaculos';
-    document.querySelector('.telaJogo').insertAdjacentElement('beforeend', novoObst);
+  
+    this.elNovoNivel.insertAdjacentElement('beforeend', novoObst);
     novoObst.style.left=posiX +"px";
     novoObst.style.top=posiY +"px";
      requestFrame(posiX,posiY,direX,direY,vel);
