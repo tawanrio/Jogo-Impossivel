@@ -3,7 +3,8 @@ var vencerPosiXeY=[];
 var tamanhoJogador = [30, 30];
 var tamanhoObstaculo = [25, 25];
 var novoNivel =[];
-var nNivel=[];
+var nNivel=0;
+var nFase=1;
 
 var jogadorVel=5;
 
@@ -11,6 +12,9 @@ var obstaculoVel=[4,3,5];
 
 var criaElemento = new novaFase();
 
+var verificaRequestFrame = false;
+
+var tempInicio;
 /*
             --------INSTRUÇÃO PARA CRIAR OBSTACULOS--------
 
@@ -58,70 +62,205 @@ criaElemento.newObst(1000,510,1,0,0);
 */
 criaElemento.newJogador();
 
-criaElemento.newNivel(1000,400,function(){
+criaElemento.newNivel(0,0,function(){});
+
+
+function nivel1(){
+    verificaRequestFrame == true
+   tempIncio = setTimeout(function(){
+
+    timeMovePlayer = setInterval(enterFrame , 20);
+    criaElemento.newNivel(1000,200,function(){
+     
+        criaElemento.newObst(150,0,0,1,0);  
+        criaElemento.newObst(250,520,0,1,0);
+        criaElemento.newObst(350,0,0,1,0);
+        criaElemento.newObst(450,520,0,1,0);
+        criaElemento.newObst(550,0,0,1,0);
+        criaElemento.newObst(650,520,0,1,0);
+        criaElemento.newObst(750,0,0,1,0);
+        criaElemento.newObst(850,520,0,1,0);
+
     
-    criaElemento.newObst(150,0,0,1,0); 
-   
-});
+    });
+}, 500);
+}
+function nivel2(){
+    verificaRequestFrame == true
+    tempIncio = setTimeout(function(){
 
-criaElemento.newNivel(1000,0,function(){
+    timeMovePlayer = setInterval(enterFrame , 20);
+    criaElemento.newNivel(1000,200,function(){
+        
+        
+        criaElemento.newObst(0,0,1,1,0);
+        criaElemento.newObst(0,520,1,1,0);
+        criaElemento.newObst(1000,0,1,1,0);
+        criaElemento.newObst(1000,520,1,1,0);
+        criaElemento.newObst(0,10,1,0,0);
+        criaElemento.newObst(1000,110,1,0,0);
+        criaElemento.newObst(0,210,1,0,0);
+        criaElemento.newObst(1000,310,1,0,0);
+        criaElemento.newObst(0,410,1,0,0);
+        criaElemento.newObst(1000,510,1,0,0);
+        
+    });
+}, 500);
+}
+function nivel3(){
+    verificaRequestFrame == true
+    tempIncio = setTimeout(function(){
 
+    timeMovePlayer = setInterval(enterFrame , 20);
+    criaElemento.newNivel(1000,200,function(){
+        
+        
+       //fase Wallace
+    for(let i=1;i<5;i++){
+        criaElemento.newObst(i*100,000,1,1,0);
+        criaElemento.newObst(i*200,100,0,1,0);
+     
+        //criaElemento.newObst(i*400,550,0,1,0);
+        criaElemento.newObst(i*100,300,1,1,1);
+       criaElemento.newObst(i*200,110,0,0,0);
+        criaElemento.newObst(i*200,410,0,0,0);
+        criaElemento.newObst(i*100,500,1,1,0);
+  }
+        
+    });
+}, 500);
+}
+function nivel4(){
+    verificaRequestFrame == true
+    tempIncio = setTimeout(function(){
+
+    timeMovePlayer = setInterval(enterFrame , 20);
+    criaElemento.newNivel(1000,200,function(){
+        
+        //tawan
+        criaElemento.newObst(150,0,0,1,0);  
+        criaElemento.newObst(250,520,0,1,0);
+        criaElemento.newObst(350,0,0,1,0);
+        criaElemento.newObst(450,520,0,1,0);
+        criaElemento.newObst(550,0,0,1,0);
+        criaElemento.newObst(650,520,0,1,0);
+        criaElemento.newObst(750,0,0,1,0);
+        criaElemento.newObst(850,520,0,1,0);
+        criaElemento.newObst(0,0,1,1,0);
+        criaElemento.newObst(0,520,1,1,0);
+        criaElemento.newObst(1000,0,1,1,0);
+        criaElemento.newObst(1000,520,1,1,0);
+        criaElemento.newObst(0,10,1,0,0);
+        criaElemento.newObst(1000,110,1,0,0);
+        criaElemento.newObst(0,210,1,0,0);
+        criaElemento.newObst(1000,310,1,0,0);
+        criaElemento.newObst(0,410,1,0,0);
+        criaElemento.newObst(1000,510,1,0,0);
+        
+    });
+}, 500);
+}
+ 
+ 
+function chamaFase(){
+ 
     
-    criaElemento.newObst(250,0,1,0,0); 
+    switch (nFase){
+        case 1:
+            nivel1();
+        break;
+        case 2:
+            
+            nivel2();
+        break;
+        case 3:
+            nivel3();
+        break;
+        case 4:
+            nivel4();
+    }
     
-});
+
+}
+ function parar(){
+    clearInterval(testetime);
+    console.log("oi2");
+ }
 
 
-var verf = false;
 
 
 capturaElementosDom();
 window.addEventListener('keydown', capturaTeclaPress);
 window.addEventListener('keyup', capturaTeclaSolt);
-timeMovePlayer = setInterval(enterFrame , 20);
+//timeMovePlayer = setInterval(enterFrame , 20);
+timeteste = setInterval(function(){ verificaRequestFrame = true;}, 200);
 
 document.getElementById('chama').addEventListener('click', function(){
-    if(verf == true){
-    document.getElementById('0').style.display = 'none';
-    document.getElementById('1').style.display = 'block';
-    verf = false;
-}else if(verf == false){
-document.getElementById('0').style.display = 'block';
-document.getElementById('1').style.display = 'none';
-     verf = true;
-}
+    
+
+   //document.getElementById('1').style.display = 'block';
+  //inicio();
+  
+  document.querySelector('.telaJogo').remove();
+  
+  
+          nivel1();
+    
+            
+       
 
 })
+document.getElementById('apaga').addEventListener('click', function(){
+    
+   
+    //document.getElementById('1').style.display = 'none';
+    //document.getElementById('1').remove();
+   // parar();
+    verificaRequestFrame = false;
+    console.log("oi");
+ 
+ })
+
 
 
 function novaFase(){
     
     this.elNovoNivel;
+    this.elProximoNivel;
+
+    this.newVencer = function(){
+        const vencer = document.createElement("div");
+        vencer.id = 'vencer';
+        this.elNovoNivel.insertAdjacentElement('beforeend', vencer);
+        vencer.style.left = vencerPosiXeY[0]+'px';
+        vencer.style.top = vencerPosiXeY[1]+'px';
+
+       
+
+    }
     
     this.newNivel = function(vencerX,vencerY,callback){
+        //console.log(nFase);
 
-        nNivel.push(nNivel.length);
-        
+        nNivel+=1;
         novoNivel[nNivel] = document.createElement("div");
         this.elNovoNivel = novoNivel[nNivel];
-        const vencer = document.createElement("div");
         
         novoNivel[nNivel].id = nNivel;
         novoNivel[nNivel].className = 'telaJogo';
-        vencer.id = 'vencer';
         
         document.querySelector('#container').insertAdjacentElement('beforeend', novoNivel[nNivel]);
-        this.elNovoNivel.insertAdjacentElement('beforeend', vencer);
         
-        novoNivel[nNivel].style.display = 'none';
+        //novoNivel[nNivel].style.display = 'none';
         vencerPosiXeY = [vencerX,vencerY] ;
         
-        vencer.style.left = vencerPosiXeY[0]+'px';
-        vencer.style.top = vencerPosiXeY[1]+'px';
+    
         
-        console.log(nNivel[nNivel]);
-      //  document.querySelector('.telaJogo').innerHTML = '';
+        //console.log(nFase);
+ 
         callback();
+        criaElemento.newVencer();
        
         
     }
@@ -188,24 +327,49 @@ function novaFase(){
                     } 
                 }
         }
+        function verificaVencedor(){
+            let fimVencerY = vencerPosiXeY[1]+75;
+            let fimVencerX = vencerPosiXeY[0]+70;
+            if(jogPosiX >= vencerPosiXeY[0] && jogPosiY >= vencerPosiXeY[1]+35 && jogPosiX < fimVencerX && jogPosiY < fimVencerY){
+        
+             
+                
+            jogDireX = 0;
+            jogDireY = 25;
+            jogPosiX=jogDireX*jogadorVel;
+            jogPosiY=jogDireY*jogadorVel; 
+            jog.style.left = jogPosiX+'px';
+            jog.style.top = jogPosiY+'px';
+        
+            
+              nFase+=1;
+           
+            document.querySelector('.telaJogo').remove();
+
+            clearInterval(timeMovePlayer);
+            verificaRequestFrame = false;
+            chamaFase();
+            }  
+        }
         function requestFrame(){
+           if(verificaRequestFrame == true){
             moveObst();
             logicaColisao();
-            
-        anima=requestAnimationFrame(requestFrame)
+            verificaVencedor();
+             anima=requestAnimationFrame(requestFrame)
+           }
             }
-    
+           
 }
 
 }
 
 
 function enterFrame(){
-   
     validaMovimento();
     attPosiJog();
     verificaColisao();
-    verificaVencedor();
+    
     verificaColisaoX = false;
     verificaColisaoY = false;   
     verificaColisao2X = false;

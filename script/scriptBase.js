@@ -43,6 +43,8 @@ function verificaVencedor(){
     let fimVencerY = vencerPosiXeY[1]+75;
     let fimVencerX = vencerPosiXeY[0]+70;
     if(jogPosiX >= vencerPosiXeY[0] && jogPosiY >= vencerPosiXeY[1]+35 && jogPosiX < fimVencerX && jogPosiY < fimVencerY){
+
+        console.log(nNivel);
         
     jogDireX = 0;
     jogDireY = 25;
@@ -50,6 +52,8 @@ function verificaVencedor(){
     jogPosiY=jogDireY*jogadorVel; 
     jog.style.left = jogPosiX+'px';
     jog.style.top = jogPosiY+'px';
+
+    
     
     }  
 }

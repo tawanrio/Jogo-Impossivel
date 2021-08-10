@@ -1,8 +1,9 @@
 /*Referente a pagina*/
-html{    margin-top: 30px;    }
+html{    margin-top: -1px;   }
+
 #container{    
         border: solid black 6px;
-        margin: auto;
+        
         position: relative;
         justify-content: space-evenly;
         background-color: rgb(141, 238, 209);
@@ -11,8 +12,7 @@ html{    margin-top: 30px;    }
         cursor: pointer;
     }
     #telaJogo{
-       
-       
+    
     }
     #jog{
         width: 30px;
