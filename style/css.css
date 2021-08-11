@@ -11,9 +11,6 @@ html{    margin-top: -1px;   }
         height: 550px;
         cursor: pointer;
     }
-    #telaJogo{
-    
-    }
     #jog{
         width: 30px;
         height: 30px;
@@ -31,7 +28,6 @@ html{    margin-top: -1px;   }
         border: solid black 2px;
     }
    
-
     #vencer{
         width: 60px;
         height: 60px;
@@ -45,3 +41,12 @@ html{    margin-top: -1px;   }
         background-color: red;
     }
  
+    #barreira{
+        
+        position: absolute;
+        background-color: black;
+       
+        left: 500px;
+      
+        border: solid black 2px;
+    }

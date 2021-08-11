@@ -6,6 +6,14 @@ var limiteCampoBaixo = 519;
 var limiteCampoEsq = -1;
 var limiteCampoDir = 1026;
 
+var tamanhoBarreira = [200  ,240];
+var posicaoBarreira = [500, 200]
+
+barreira.style.left = posicaoBarreira[0]+'px';
+barreira.style.top = posicaoBarreira[1]+'px';
+
+barreira.style.width = tamanhoBarreira[0]+'px';
+barreira.style.height = tamanhoBarreira[1]+'px';
 
 
 var jogDireX=0;
@@ -15,7 +23,10 @@ var jogPosiY=0;
 
 function capturaElementosDom(){
     jog=document.getElementById('jog');
+    barreira=document.getElementById('barreira');
 }
+
+
 
 function limitaCampo(){
     if(jogPosiX > limiteCampoDir){
@@ -38,6 +49,80 @@ function limitaCampo(){
         jogPosiY = limiteCampoCima+1;   
         jog.style.top = jogPosiY+'px';
     }
+
+    let By;
+    let Bx;
+
+    By = posicaoBarreira[1]- jogPosiY;
+    Bx = posicaoBarreira[0] - jogPosiX;
+
+    if(Bx >= 0){//se jog estiver a direita da barreira Bx sera positivo ( maior que 0)
+        Bx = Math.abs(Bx); // transforma Bx em positivo
+        if(tamanhoJogador[1] > Bx){// verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
+          if(By <= 0){
+            By = Math.abs(By);
+            if(tamanhoBarreira[1] > By){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+            flechaDir = false;
+            jogPosiX = posicaoBarreira[0]-tamanhoJogador[0]-4;   
+            jog.style.left = jogPosiX+'px';
+                }
+                }
+
+                
+          }
+         
+        }else{//se o jog estiver a esquerda da barreira Bx sera negativo ( menor que 0)
+            Bx = Math.abs(Bx);
+            if(tamanhoBarreira[0]+2 > Bx){ // verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
+                if(By <= 0){// se jog estiver acima da barreira By sera positivo
+                  By = Math.abs(By);
+                  if(tamanhoBarreira[1] > By){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                    flechaEsq = false;
+                   ;; jogPosiX = posicaoBarreira[0]+5;   
+                   // jog.style.left = jogPosiX+'px';
+                      }
+                }
+            }
+
+        }
+/*
+        if(By >= 0){//se jog estiver a acima da barreira By sera positivo ( maior que 0)
+            By = Math.abs(By); // transforma Bx em positivo
+            if(tamanhoJogador[1] > By){// verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
+              if(Bx >= 0){// se jog estiver acima da barreira Bx sera positivo
+                Bx = Math.abs(Bx);
+          
+                    }else{// se jog estiver abaixo da barreira By sera negativo 
+                        Bx = Math.abs(Bx);
+                        if(tamanhoBarreira[1] > By){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                        flechaBaixo = false;
+                        jogPosiY = posicaoBarreira[0]-tamanhoJogador[0]-4;   
+                        jog.style.top = jogPosiY+'px';
+                            }
+                    }
+              }
+             
+            }else{//se o jog estiver a abaixo da barreira By sera negativo ( menor que 0)
+                By = Math.abs(By);
+                if(tamanhoBarreira[0]+2 > By){ // verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
+                    if(Bx >= 0){// se jog estiver acima da barreira By sera positivo
+                        Bx = Math.abs(Bx);
+                
+                          }else{// se jog estiver esquerda da barreira Bx sera negativo 
+                            Bx = Math.abs(Bx);
+                            
+                              if(tamanhoBarreira[1] > Bx){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                              flechaCima = false;
+                              jogPosiY = posicaoBarreira[0]+5;   
+                              jog.style.top = jogPosiY+'px';
+                                  }
+                          }
+                    }
+    
+            }*/
+
+
+
 }
 function verificaVencedor(){
     let fimVencerY = vencerPosiXeY[1]+75;
@@ -50,6 +135,7 @@ function verificaVencedor(){
     jogDireY = 25;
     jogPosiX=jogDireX*jogadorVel;
     jogPosiY=jogDireY*jogadorVel; 
+    
     jog.style.left = jogPosiX+'px';
     jog.style.top = jogPosiY+'px';
 

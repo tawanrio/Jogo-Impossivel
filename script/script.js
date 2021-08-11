@@ -193,7 +193,7 @@ function chamaFase(){
 capturaElementosDom();
 window.addEventListener('keydown', capturaTeclaPress);
 window.addEventListener('keyup', capturaTeclaSolt);
-//timeMovePlayer = setInterval(enterFrame , 20);
+timeMovePlayer = setInterval(enterFrame , 20);
 timeteste = setInterval(function(){ verificaRequestFrame = true;}, 200);
 
 document.getElementById('chama').addEventListener('click', function(){
@@ -326,6 +326,9 @@ function novaFase(){
                         verificaColisaoX = true;       
                     } 
                 }
+
+               
+
         }
         function verificaVencedor(){
             let fimVencerY = vencerPosiXeY[1]+75;
@@ -366,8 +369,8 @@ function novaFase(){
 
 
 function enterFrame(){
-    validaMovimento();
     attPosiJog();
+    validaMovimento();
     verificaColisao();
     
     verificaColisaoX = false;
