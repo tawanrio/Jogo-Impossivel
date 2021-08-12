@@ -42,11 +42,9 @@ html{    margin-top: -1px;   }
     }
  
     #barreira{
-        
+
         position: absolute;
         background-color: black;
        
-        left: 500px;
-      
         border: solid black 2px;
     }

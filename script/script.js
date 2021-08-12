@@ -6,6 +6,10 @@ var novoNivel =[];
 var nNivel=0;
 var nFase=1;
 
+var tamanhoBarreira = [[],[]];
+var posicaoBarreira = [[],[]];
+var contador = 0;
+
 var jogadorVel=5;
 
 var obstaculoVel=[4,3,5];
@@ -22,44 +26,9 @@ var tempInicio;
 
 
 
-criaElemento.newNivel(1,1000,0,function(){
-    //fase Wallace
-  //  for(let i=1;i<5;i++){
-       // criaElemento.newObst(i*100,000,1,1,0);
-   //    criaElemento.newObst(i*100,100,0,1,1);
-        criaElemento.newObst(200,0,0,1,0);
-        criaElemento.newObst(400,550,0,1,0);
-
-    /*    criaElemento.newObst(i*100,300,1,1,2);
-        criaElemento.newObst(i*200,400,0,0,0);
-        criaElemento.newObst(i*100,500,1,1,1);
-     //  }
-});
 */
-/*
-criaElemento.newNivel(1,1000,210,function(){
- 
-criaElemento.newObst(150,0,0,1,0);  
-criaElemento.newObst(250,520,0,1,0);
-criaElemento.newObst(350,0,0,1,0);
-criaElemento.newObst(450,520,0,1,0);
-criaElemento.newObst(550,0,0,1,0);
-criaElemento.newObst(650,520,0,1,0);
-criaElemento.newObst(750,0,0,1,0);
-criaElemento.newObst(850,520,0,1,0);
-criaElemento.newObst(0,0,1,1,0);
-criaElemento.newObst(0,520,1,1,0);
-criaElemento.newObst(1000,0,1,1,0);
-criaElemento.newObst(1000,520,1,1,0);
-criaElemento.newObst(0,10,1,0,0);
-criaElemento.newObst(1000,110,1,0,0);
-criaElemento.newObst(0,210,1,0,0);
-criaElemento.newObst(1000,310,1,0,0);
-criaElemento.newObst(0,410,1,0,0);
-criaElemento.newObst(1000,510,1,0,0);
 
-});
-*/
+timeMovePlayer = setInterval(enterFrame , 20);
 criaElemento.newJogador();
 
 criaElemento.newNivel(0,0,function(){});
@@ -69,9 +38,14 @@ function nivel1(){
     verificaRequestFrame == true
    tempIncio = setTimeout(function(){
 
-    timeMovePlayer = setInterval(enterFrame , 20);
+   // timeMovePlayer = setInterval(enterFrame , 20);
     criaElemento.newNivel(1000,200,function(){
+
+        criaElemento.newBarreira(200,0,200,500);
+        
+        criaElemento.newBarreira(600,10,200,490);
      
+
         criaElemento.newObst(150,0,0,1,0);  
         criaElemento.newObst(250,520,0,1,0);
         criaElemento.newObst(350,0,0,1,0);
@@ -80,17 +54,26 @@ function nivel1(){
         criaElemento.newObst(650,520,0,1,0);
         criaElemento.newObst(750,0,0,1,0);
         criaElemento.newObst(850,520,0,1,0);
-
+        
+        
+    
     
     });
-}, 500);
+}, 300);
 }
 function nivel2(){
     verificaRequestFrame == true
     tempIncio = setTimeout(function(){
 
-    timeMovePlayer = setInterval(enterFrame , 20);
+  //  timeMovePlayer = setInterval(enterFrame , 20);
     criaElemento.newNivel(1000,200,function(){
+
+        criaElemento.newBarreira(100,0,200,240);
+        criaElemento.newBarreira(100,320,200,230);
+
+        
+        criaElemento.newBarreira(650,0,200,240);
+        criaElemento.newBarreira(650,320,200,230);
         
         
         criaElemento.newObst(0,0,1,1,0);
@@ -105,16 +88,16 @@ function nivel2(){
         criaElemento.newObst(1000,510,1,0,0);
         
     });
-}, 500);
+}, 300);
 }
 function nivel3(){
     verificaRequestFrame == true
     tempIncio = setTimeout(function(){
 
-    timeMovePlayer = setInterval(enterFrame , 20);
+    //timeMovePlayer = setInterval(enterFrame , 20);
     criaElemento.newNivel(1000,200,function(){
         
-        
+        criaElemento.newBarreira(0,0);
        //fase Wallace
     for(let i=1;i<5;i++){
         criaElemento.newObst(i*100,000,1,1,0);
@@ -128,15 +111,15 @@ function nivel3(){
   }
         
     });
-}, 500);
+}, 300);
 }
 function nivel4(){
     verificaRequestFrame == true
     tempIncio = setTimeout(function(){
 
-    timeMovePlayer = setInterval(enterFrame , 20);
-    criaElemento.newNivel(1000,200,function(){
-        
+      //  timeMovePlayer = setInterval(enterFrame , 20);
+        criaElemento.newNivel(1000,200,function(){
+            criaElemento.newBarreira(0,0);
         //tawan
         criaElemento.newObst(150,0,0,1,0);  
         criaElemento.newObst(250,520,0,1,0);
@@ -158,7 +141,7 @@ function nivel4(){
         criaElemento.newObst(1000,510,1,0,0);
         
     });
-}, 500);
+}, 300);
 }
  
  
@@ -193,7 +176,7 @@ function chamaFase(){
 capturaElementosDom();
 window.addEventListener('keydown', capturaTeclaPress);
 window.addEventListener('keyup', capturaTeclaSolt);
-timeMovePlayer = setInterval(enterFrame , 20);
+//timeMovePlayer = setInterval(enterFrame , 20);
 timeteste = setInterval(function(){ verificaRequestFrame = true;}, 200);
 
 document.getElementById('chama').addEventListener('click', function(){
@@ -205,7 +188,7 @@ document.getElementById('chama').addEventListener('click', function(){
   document.querySelector('.telaJogo').remove();
   
   
-          nivel1();
+          nivel2();
     
             
        
@@ -217,17 +200,135 @@ document.getElementById('apaga').addEventListener('click', function(){
     //document.getElementById('1').style.display = 'none';
     //document.getElementById('1').remove();
    // parar();
-    verificaRequestFrame = false;
-    console.log("oi");
+   logicaBarreira();
  
  })
 
+ function logicaBarreira(){
+   let i = 0
+    for (i ; i < contador; i++) {
+
+        let BxY;
+        let BxX;
+        let ByY;
+        let ByX;
+                  
+     BxX = posicaoBarreira[i][0] - jogPosiX;
+    BxY = posicaoBarreira[i][1]- jogPosiY;
+    ByX = posicaoBarreira[i][0] - jogPosiX;
+    ByY = posicaoBarreira[i][1]- jogPosiY;
+        
+    
+
+    
 
 
+    if(BxX >= 0){//se jog estiver a direita da barreira Bx sera positivo ( maior que 0)
+        BxX = Math.abs(BxX); // transforma Bx em positivo
+        if(tamanhoJogador[0]+5 > BxX){// verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
+          if(BxY <= 0){
+            BxY = Math.abs(BxY);
+            if(tamanhoBarreira[i][1] > BxY){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+            flechaDir = false;
+            jogPosiX += -1 ;
+            jog.style.left = jogPosiX+'px';
+           
+                }
+                }else{
+                    BxY = Math.abs(BxY);
+                    if(tamanhoJogador[1] > BxY){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                    flechaDir = false;
+                  
+                    }
+                }
+          }
+        }else{//se o jog estiver a esquerda da barreira Bx sera negativo ( menor que 0)
+            BxX = Math.abs(BxX);
+            if(tamanhoBarreira[i][0]+2 > BxX){ // verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
+                if(BxY <= 0){// se jog estiver acima da barreira By sera positivo
+                    BxY = Math.abs(BxY);
+                  if(tamanhoBarreira[i][1] > BxY){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                    flechaEsq = false;
+                      }
+                }
+                else{
+                    BxY = Math.abs(BxY);
+                    if(tamanhoJogador[1] > BxY){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                    flechaEsq = false;
+                    }
+                }
+            }
+        }     
+        if(ByY >= 0){//se jog estiver a acima da barreira By sera positivo ( maior que 0)
+            ByY = Math.abs(ByY); // transforma Bx em positivo
+            if(tamanhoJogador[1]+5 > ByY){// verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
+              if(ByX >= 0){// se jog estiver acima da barreira Bx sera positivo
+                ByX = Math.abs(ByX);
+                if(tamanhoJogador[0] > ByX){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                    flechaBaixo = false;
+                }
+
+                    }else{// se jog estiver abaixo da barreira By sera negativo 
+                        ByX = Math.abs(ByX);
+                        if(tamanhoBarreira[i][0] > ByX){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                            flechaBaixo = false;
+                          }
+                    }
+              }
+            }else{//se o jog estiver a abaixo da barreira By sera negativo ( menor que 0)
+                ByY = Math.abs(ByY);
+                if(tamanhoBarreira[i][1]+5 > ByY){ // verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
+                    if(ByX >= 0){// se jog estiver acima da barreira By sera positivo
+                        ByX = Math.abs(ByX);
+                        if(tamanhoJogador[0] > ByX){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                            flechaCima = false;
+                        }
+                          }else{// se jog estiver esquerda da barreira Bx sera negativo 
+                            ByX = Math.abs(ByX);
+                            if(tamanhoBarreira[i][0] > ByX){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                                flechaCima = false;
+                              
+                                    }
+                          }
+                    }
+    
+            }
+    }
+        }
+
+      
 function novaFase(){
     
     this.elNovoNivel;
     this.elProximoNivel;
+   
+   
+
+    this.newBarreira = function(posiBarrX,posiBarrY,tamBarrX,tamBarrY){
+        const barreira = document.createElement('div');
+        barreira.id = 'barreira';
+        this.elNovoNivel.insertAdjacentElement('beforeend', barreira);
+
+      //  console.log(contador);
+         posicaoBarreira[contador] = [posiBarrX,posiBarrY];
+
+         tamanhoBarreira[contador] = [tamBarrX,tamBarrY];
+         
+         barreira.style.left = posicaoBarreira[contador][0]+'px';
+         barreira.style.top = posicaoBarreira[contador][1]+'px';
+         
+         barreira.style.width = tamanhoBarreira[contador][0]+'px';
+         barreira.style.height = tamanhoBarreira[contador][1]+'px';
+         
+       
+         
+         
+         contador+=1;
+   
+      
+                     
+
+    }
 
     this.newVencer = function(){
         const vencer = document.createElement("div");
@@ -236,7 +337,9 @@ function novaFase(){
         vencer.style.left = vencerPosiXeY[0]+'px';
         vencer.style.top = vencerPosiXeY[1]+'px';
 
-       
+        
+
+       clearInterval(enterFrame);
 
     }
     
@@ -255,9 +358,9 @@ function novaFase(){
         //novoNivel[nNivel].style.display = 'none';
         vencerPosiXeY = [vencerX,vencerY] ;
         
-    
+       // timeMovePlayer = setInterval(enterFrame , 20);
         
-        //console.log(nFase);
+        
  
         callback();
         criaElemento.newVencer();
@@ -295,6 +398,9 @@ function novaFase(){
         }else if(posiX <  limiteCampoEsq){
             direX=1;     
         }
+
+
+        
     }
      function logicaColisao(){
         let Ry ;
@@ -334,9 +440,18 @@ function novaFase(){
             let fimVencerY = vencerPosiXeY[1]+75;
             let fimVencerX = vencerPosiXeY[0]+70;
             if(jogPosiX >= vencerPosiXeY[0] && jogPosiY >= vencerPosiXeY[1]+35 && jogPosiX < fimVencerX && jogPosiY < fimVencerY){
-        
+                let i= 0
+                console.log(tamanhoBarreira[i][0]);
+              for( i ; i < contador; i++){
+                    tamanhoBarreira[i][0]=0;
+                    posicaoBarreira[i][0]=0;
+                    tamanhoBarreira[i][1]=0;
+                    posicaoBarreira[i][1]=0;
+
+                    console.log(tamanhoBarreira[i][0]);
+              }
+            
              
-                
             jogDireX = 0;
             jogDireY = 25;
             jogPosiX=jogDireX*jogadorVel;
@@ -348,8 +463,9 @@ function novaFase(){
               nFase+=1;
            
             document.querySelector('.telaJogo').remove();
-
-            clearInterval(timeMovePlayer);
+           
+           
+           
             verificaRequestFrame = false;
             chamaFase();
             }  
@@ -365,11 +481,25 @@ function novaFase(){
            
 }
 
+
+
 }
-
-
+function enterFrame(){
+    attPosiJog();     
+     logicaBarreira();
+    validaMovimento();
+    verificaColisao();
+    
+    verificaColisaoX = false;
+    verificaColisaoY = false;   
+    verificaColisao2X = false;
+    verificaColisao2Y = false;  
+  
+}
+/*
 function enterFrame(){
     attPosiJog();
+   
     validaMovimento();
     verificaColisao();
     
@@ -380,6 +510,6 @@ function enterFrame(){
   
 }
 
-
+*/
 
 
