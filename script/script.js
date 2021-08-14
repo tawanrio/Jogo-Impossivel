@@ -16,13 +16,13 @@ var novoNivel =[];
 var nNivel=0;
 var nFase=1;
 
-var tamanhoBarreira = [[],[]];
-var posicaoBarreira = [[],[]];
+var tamanhoBarreira = [];
+var posicaoBarreira = [];
 var contador = 0;
 
 var jogadorVel=5;
 
-var obstaculoVel=[4,3,2,1];
+var obstaculoVel=[];
 
 var criaElemento = new novaFase();
 
@@ -38,103 +38,104 @@ var tempInicio;
 
 */
 
-timeMovePlayer = setInterval(enterFrame , 20);
+timeMovePlayer = setInterval(enterFrame , 15);
 criaElemento.newJogador();
 
 criaElemento.newNivel(0,0,function(){});
 
 
 function nivel1(){
-    verificaRequestFrame == true
+    verificaRequestFrame == true;
    tempIncio = setTimeout(function(){
     criaElemento.newNivel(1000,200,function(){
     
-  
-        criaElemento.newBarreira(200,200,500,300);
+        criaElemento.newBarreira(-50,0);
 
-        criaElemento.newObstaculoSup(1000,400,1,0,0);  
-        criaElemento.newObstaculoSup(200,0,0,1,0);
-        criaElemento.newObstaculoSup(550,0,0,1,0);/*
-        criaElemento.newObst(250,520,0,1,0);
-        criaElemento.newObst(450,520,0,1,0);
-        criaElemento.newObst(650,520,0,1,0);
-        criaElemento.newObst(750,0,0,1,0);
-        criaElemento.newObst(850,520,0,1,0);*/
+        criaElemento.newObstaculoSup(150,0,0,1,4);
+        criaElemento.newObstaculoSup(250,520,0,1,4);
+        criaElemento.newObstaculoSup(350,0,0,1,4);
+        criaElemento.newObstaculoSup(450,520,0,1,4);
+        criaElemento.newObstaculoSup(550,0,0,1,4);    
+        criaElemento.newObstaculoSup(650,520,0,1,4);
+        criaElemento.newObstaculoSup(750,0,0,1,4);
+        criaElemento.newObstaculoSup(850,520,0,1,4);
         
         
-    
+        /*
+    */
     
     });
-}, 300);
+}, 500);
 }
 function nivel2(){
-    verificaRequestFrame == true
+    verificaRequestFrame == true;
     tempIncio = setTimeout(function(){
     criaElemento.newNivel(1000,200,function(){
-  
+        criaElemento.newBarreira(-50,0);
         
-        criaElemento.newObst(0,0,1,1,3);
-        criaElemento.newObst(0,520,1,1,3);
-        criaElemento.newObst(1000,0,1,1,3);
-        criaElemento.newObst(1000,520,1,1,3);
-        criaElemento.newObst(0,10,1,0,3);
-        criaElemento.newObst(1000,110,1,0,3);
-        criaElemento.newObst(0,210,1,0,3);
-        criaElemento.newObst(1000,310,1,0,3);
-        criaElemento.newObst(0,410,1,0,3);
-        criaElemento.newObst(1000,510,1,0,3);
+       // criaElemento.newObstaculoSup(0,0,1,1,3);
+       // criaElemento.newObstaculoSup(0,520,1,1,3);
+      //  criaElemento.newObstaculoSup(1000,0,1,1,3);
+      //  criaElemento.newObstaculoSup(1000,520,1,1,3);
+        criaElemento.newObstaculoSup(0,10,1,0,3);
+        criaElemento.newObstaculoSup(1000,110,1,0,3);
+        criaElemento.newObstaculoSup(0,210,1,0,3);
+        criaElemento.newObstaculoSup(1000,310,1,0,3);
+        criaElemento.newObstaculoSup(0,410,1,0,3);
+        criaElemento.newObstaculoSup(1000,510,1,0,3);
         
     });
-}, 300);
+}, 500);
 }
 function nivel3(){
     //fase Wallace
-    verificaRequestFrame == true
+    verificaRequestFrame == true;
     tempIncio = setTimeout(function(){
     criaElemento.newNivel(1000,200,function(){
+        criaElemento.newBarreira(-50,0);
 
-        criaElemento.newBarreira(0,0);
     for(let i=1;i<5;i++){
-        criaElemento.newObst(i*100,000,1,1,0);
-        criaElemento.newObst(i*200,100,0,1,0);
+        criaElemento.newObstaculoSup(i*100,000,1,1,0);
+        criaElemento.newObstaculoSup(i*200,100,0,1,0);
      
 
-        criaElemento.newObst(i*100,300,1,1,1);
-       criaElemento.newObst(i*200,110,0,0,0);
-        criaElemento.newObst(i*200,410,0,0,0);
-        criaElemento.newObst(i*100,500,1,1,0);
+        criaElemento.newObstaculoSup(i*100,300,1,1,1);
+       criaElemento.newObstaculoSup(i*200,110,0,0,0);
+        criaElemento.newObstaculoSup(i*200,410,0,0,0);
+        criaElemento.newObstaculoSup(i*100,500,1,1,0);
   }
         
     });
-}, 300);
+}, 500);
 }
 function nivel4(){
     //tawan
     verificaRequestFrame == true
     tempIncio = setTimeout(function(){
         criaElemento.newNivel(1000,200,function(){
-            criaElemento.newBarreira(0,0);
-        criaElemento.newObst(150,0,0,1,0);  
-        criaElemento.newObst(250,520,0,1,0);
-        criaElemento.newObst(350,0,0,1,0);
-        criaElemento.newObst(450,520,0,1,0);
-        criaElemento.newObst(550,0,0,1,0);
-        criaElemento.newObst(650,520,0,1,0);
-        criaElemento.newObst(750,0,0,1,0);
-        criaElemento.newObst(850,520,0,1,0);
-        criaElemento.newObst(0,0,1,1,0);
-        criaElemento.newObst(0,520,1,1,0);
-        criaElemento.newObst(1000,0,1,1,0);
-        criaElemento.newObst(1000,520,1,1,0);
-        criaElemento.newObst(0,10,1,0,0);
-        criaElemento.newObst(1000,110,1,0,0);
-        criaElemento.newObst(0,210,1,0,0);
-        criaElemento.newObst(1000,310,1,0,0);
-        criaElemento.newObst(0,410,1,0,0);
-        criaElemento.newObst(1000,510,1,0,0);
+            criaElemento.newBarreira(-50,0);
+
+        criaElemento.newObstaculoSup(150,0,0,1,0);  
+        criaElemento.newObstaculoSup(250,520,0,1,0);
+        criaElemento.newObstaculoSup(350,0,0,1,0);
+        criaElemento.newObstaculoSup(450,520,0,1,0);
+        criaElemento.newObstaculoSup(550,0,0,1,0);
+        criaElemento.newObstaculoSup(650,520,0,1,0);
+        criaElemento.newObstaculoSup(750,0,0,1,0);
+        criaElemento.newObstaculoSup(850,520,0,1,0);
+        criaElemento.newObstaculoSup(0,0,1,1,0);
+        criaElemento.newObstaculoSup(0,520,1,1,0);
+        criaElemento.newObstaculoSup(1000,0,1,1,0);
+        criaElemento.newObstaculoSup(1000,520,1,1,0);
+        criaElemento.newObstaculoSup(0,10,1,0,0);
+        criaElemento.newObstaculoSup(1000,110,1,0,0);
+        criaElemento.newObstaculoSup(0,210,1,0,0);
+        criaElemento.newObstaculoSup(1000,310,1,0,0);
+        criaElemento.newObstaculoSup(0,410,1,0,0);
+        criaElemento.newObstaculoSup(1000,510,1,0,0);
         
     });
-}, 300);
+}, 500);
 }
 function nivel5(){
     verificaRequestFrame == true
@@ -181,7 +182,7 @@ function nivel5(){
 */
 
     });
-}, 300);
+}, 500);
 }
 function nivel6(){
     verificaRequestFrame == true
@@ -213,7 +214,7 @@ function nivel6(){
 
 
     });
-}, 300);
+}, 500);
 }
 /*
 function nivel7(){
@@ -314,10 +315,11 @@ document.getElementById('apaga').addEventListener('click', function(){
     //document.getElementById('1').style.display = 'none';
     //document.getElementById('1').remove();
    // parar();
- 
-   
+   moveObstaculoSup();
+   logicaBarreiraObstaculo();
  
  })
+
 
  function logicaBarreira(){
    let i = 0
@@ -402,7 +404,6 @@ document.getElementById('apaga').addEventListener('click', function(){
                             ByX = Math.abs(ByX);
                             if(tamanhoBarreira[i][0] > ByX){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
                                 flechaCima = false;
-                              
                                     }
                           }
                     }
@@ -412,8 +413,192 @@ document.getElementById('apaga').addEventListener('click', function(){
         }
  
  }
+ function logicaObstaculoSup(){
+    let i = 0;
+    for(i ; i<contadorObstaculoSup; i++){
+    let Ry ;
+    let Rx ;
+
+   
+       if(jogPosiX > posicaoObstaculoSup[i][0]-35 && jogPosiX                  < posicaoObstaculoSup[i][0]+35 && jogPosiY > posicaoObstaculoSup[i][1]-35 && jogPosiY          < posicaoObstaculoSup[i][1]+35){
+         
+            Ry = posicaoObstaculoSup[i][1] - jogPosiY;
+            Rx = posicaoObstaculoSup[i][0] - jogPosiX;
+       }
+        if(Ry >= 0){
+                 Ry = Math.abs(Ry);
+                 if(tamanhoJogador[1] > Ry){
+                    verificaColisaoY = true;    
+            
+                }
+            }
+            else{
+                Ry = Math.abs(Ry);
+                if(tamanhoObstaculoSup[i][1] > Ry){
+                    verificaColisaoY = true;  
+                    
+                }
+            }
+            if(Rx >= 0){
+                 Rx = Math.abs(Rx);
+                 if(tamanhoJogador[0] > Rx){
+                    verificaColisaoX = true;        
+                }
+            }else{
+                Rx = Math.abs(Rx);
+                if(tamanhoObstaculoSup[i][0] > Rx){
+                    verificaColisaoX = true;       
+                } 
+            }
+    }
+    
+}
       
        var novoObstaculo = [];
+        function moveObstaculoSup(){
+            
+            let i=0;
+            for(i;i<contadorObstaculoSup;i++){
+           //   while(i<contadorObstaculoSup){
+               
+               posicaoObstaculoSup[i][0]+= direObstSupX[i]*obstaculoVel[i][0]; 
+               posicaoObstaculoSup[i][1]+= direObstSupY[i]*obstaculoVel[i][0]; 
+                     
+             novoObstaculo[i].style.left=posicaoObstaculoSup[i][0]+"px";
+             novoObstaculo[i].style.top=posicaoObstaculoSup[i][1]+"px";
+
+        
+               if(posicaoObstaculoSup[i][1] > limiteCampoBaixo){
+                direObstSupY[i]=-1;
+               }else if(posicaoObstaculoSup[i][1] <  limiteCampoCima){
+                direObstSupY[i]=1;      
+               }
+               if(posicaoObstaculoSup[i][0] > limiteCampoDir){
+                direObstSupX[i]=-1;
+               }else if(posicaoObstaculoSup[i][0] <  limiteCampoEsq){
+                direObstSupX[i]=1;     
+               }
+              //i++;
+           }
+           }
+           function logicaBarreiraObstaculo(){
+         
+            let i = 0;
+            let b = 0;
+            for (b ; b < 5; b++) {
+             for (i ; i < contadorObstaculoSup; i++) {
+                
+                 let BxY;
+                 let BxX;
+                 let ByY;
+                 let ByX;
+                           
+                
+              BxX = posicaoBarreira[b][0] - posicaoObstaculoSup[i][0];
+              BxY = posicaoBarreira[b][1]- posicaoObstaculoSup[i][1];
+              ByX = posicaoBarreira[b][0] - posicaoObstaculoSup[i][0];
+              ByY = posicaoBarreira[b][1]- posicaoObstaculoSup[i][1];
+            
+            
+             if(BxX >= 0){//se jog estiver a direita da barreira Bx sera positivo ( maior que 0)
+                BxX = Math.abs(BxX); // transforma Bx em positivo
+                 if(tamanhoObstaculoSup[i][0]+5 > BxX){// verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
+                   if(BxY <= 0){
+                     BxY = Math.abs(BxY);
+                     if(tamanhoBarreira[b][1] > BxY){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                        
+                         }
+                         }else{
+                             BxY = Math.abs(BxY);
+                             if(tamanhoObstaculoSup[i][1] > BxY){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                                
+                           
+                             }
+                         }
+                   }
+                 }else{//se o jog estiver a esquerda da barreira Bx sera negativo ( menor que 0)
+                     BxX = Math.abs(BxX);
+                     if(tamanhoBarreira[b][0]+2 > BxX){ // verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
+                         if(BxY <= 0){// se jog estiver acima da barreira By sera positivo
+                             BxY = Math.abs(BxY);
+                           if(tamanhoBarreira[b][1] > BxY){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                            
+                               if(direObstSupY[i] == 1){
+                                direObstSupY[i]=-1;
+                                }else if(direObstSupY[i] == -1){
+                                    direObstSupY[i]=1;
+                                }
+                               }
+                         }
+                         else{
+                             BxY = Math.abs(BxY);
+                             if(tamanhoObstaculoSup[i][1] > BxY){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                                if(direObstSupY[i] == 1){
+                                    direObstSupY[i]=-1;
+                                }else if(direObstSupY[i] == -1){
+                                    direObstSupY[i]=1;
+                                }
+                             }
+                         }
+                     }
+                 }     
+                 if(ByY >= 0){//se jog estiver a acima da barreira By sera positivo ( maior que 0)
+                     ByY = Math.abs(ByY); // transforma Bx em positivo
+                     if(tamanhoObstaculoSup[i][1]+5 > ByY){// verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
+                       if(ByX >= 0){// se jog estiver acima da barreira Bx sera positivo
+                         ByX = Math.abs(ByX);
+                         if(tamanhoObstaculoSup[i][0] > ByX){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                            if(direObstSupY[i] == 1){
+                                direObstSupY[i]=-1;
+                            }else if(direObstSupY[i] == -1){
+                                direObstSupY[i]=1;
+                            }
+                         }
+         
+                             }else{// se jog estiver abaixo da barreira By sera negativo 
+                                 ByX = Math.abs(ByX);
+                                 if(tamanhoBarreira[b][0] > ByX){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                                   
+                                 
+                                    if(direObstSupX[i] == 1){
+                                        direObstSupX[i]=-1;
+                                    }else if(direObstSupX[i] == -1){
+                                        direObstSupX[i]=1;
+                                    }
+                                     
+                                   }
+                             }
+                       }
+                     }else{//se o jog estiver a abaixo da barreira By sera negativo ( menor que 0)
+                         ByY = Math.abs(ByY);
+                         if(tamanhoBarreira[b][1]+5 > ByY){ // verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
+                             if(ByX >= 0){// se jog estiver acima da barreira By sera positivo
+                                 ByX = Math.abs(ByX);
+                                 if(tamanhoObstaculoSup[i][0] > ByX){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                                    if(direObstSupX[i] == 1){
+                                        direObstSupX[i]=-1;
+                                    }else if(direObstSupX[i] == -1){
+                                        direObstSupX[i]=1;
+                                    }
+                                 }
+                                   }else{// se jog estiver esquerda da barreira Bx sera negativo 
+                                     ByX = Math.abs(ByX);
+                                     if(tamanhoBarreira[b][0] > ByX){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                                       
+                                        if(direObstSupX[i] == 1){
+                                            direObstSupX[i]=-1;
+                                        }else if(direObstSupX[i] == -1){
+                                            direObstSupX[i]=1;
+                                        }
+                                             }
+                                   }
+                             }
+             
+                     }
+             }
+            }
+                 }
+         
 function novaFase(){
     
     this.elNovoNivel;
@@ -425,8 +610,13 @@ function novaFase(){
         barreira.id = 'barreira';
         this.elNovoNivel.insertAdjacentElement('beforeend', barreira);
 
+            posicaoBarreira[contador]= [];
+            tamanhoBarreira[contador]=[];
       
-         posicaoBarreira[contador] = [posiBarrX,posiBarrY];
+         //posicaoBarreira[contador] = [posiBarrX,posiBarrY];
+         posicaoBarreira[contador][0]=posiBarrX;
+         posicaoBarreira[contador][1]=posiBarrY;
+
 
          tamanhoBarreira[contador] = [tamBarrX,tamBarrY];
          
@@ -447,7 +637,7 @@ function novaFase(){
         vencer.style.left = vencerPosiXeY[0]+'px';
         vencer.style.top = vencerPosiXeY[1]+'px';
 
-       clearInterval(enterFrame);
+       
 
     }
     
@@ -486,13 +676,12 @@ function novaFase(){
         
         direObstSupX[contadorObstaculoSup]=direX;
         direObstSupY[contadorObstaculoSup]=direY;
-        
-        
+
+        obstaculoVel[contadorObstaculoSup]=[vel];
         posicaoObstaculoSup[contadorObstaculoSup] = [];
-        //posicaoObstaculoSup[posicaoObstaculoSup.lenght] = [];
         tamanhoObstaculoSup[contadorObstaculoSup] = [];
 
-        console.log( posicaoObstaculoSup,contadorObstaculoSup,posicaoObstaculoSup[contadorObstaculoSup]);
+        
 
         posicaoObstaculoSup[contadorObstaculoSup][0]=posiX;
         posicaoObstaculoSup[contadorObstaculoSup][1]=posiY;
@@ -508,202 +697,6 @@ function novaFase(){
         novoObstaculo[contadorObstaculoSup].style.height=tamanhoObstaculoSup[contadorObstaculoSup][1]+'px';
 
         
- 
-        function logicaBarreiraObstaculo(){
-         
-            let i = 0;
-             for (i ; i < contadorObstaculoSup; i++) {
-                
-                 let BxY;
-                 let BxX;
-                 let ByY;
-                 let ByX;
-                           
-              BxX = posicaoBarreira[i][0] - posicaoObstaculoSup[i][0];
-             BxY = posicaoBarreira[i][1]- posicaoObstaculoSup[i][1];
-             ByX = posicaoBarreira[i][0] - posicaoObstaculoSup[i][0];
-             ByY = posicaoBarreira[i][1]- posicaoObstaculoSup[i][1];
-            
-            
-             if(BxX >= 0){//se jog estiver a direita da barreira Bx sera positivo ( maior que 0)
-                BxX = Math.abs(BxX); // transforma Bx em positivo
-                 if(tamanhoObstaculoSup[i][0]+5 > BxX){// verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
-                   if(BxY <= 0){
-                     BxY = Math.abs(BxY);
-                     if(tamanhoBarreira[i][1] > BxY){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
-                        
-                         }
-                         }else{
-                             BxY = Math.abs(BxY);
-                             if(tamanhoObstaculoSup[i][1] > BxY){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
-                                
-                           
-                             }
-                         }
-                   }
-                 }else{//se o jog estiver a esquerda da barreira Bx sera negativo ( menor que 0)
-                     BxX = Math.abs(BxX);
-                     if(tamanhoBarreira[i][0]+2 > BxX){ // verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
-                         if(BxY <= 0){// se jog estiver acima da barreira By sera positivo
-                             BxY = Math.abs(BxY);
-                           if(tamanhoBarreira[i][1] > BxY){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
-                            
-                               if(direObstSupY[i] == 1){
-                                direObstSupY[i]=-1;
-                                }else if(direObstSupY[i] == -1){
-                                    direObstSupY[i]=1;
-                                }
-                               }
-                         }
-                         else{
-                             BxY = Math.abs(BxY);
-                             if(tamanhoObstaculoSup[i][1] > BxY){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
-                                if(direObstSupY[i] == 1){
-                                    direObstSupY[i]=-1;
-                                }else if(direObstSupY[i] == -1){
-                                    direObstSupY[i]=1;
-                                }
-                             }
-                         }
-                     }
-                 }     
-                 if(ByY >= 0){//se jog estiver a acima da barreira By sera positivo ( maior que 0)
-                     ByY = Math.abs(ByY); // transforma Bx em positivo
-                     if(tamanhoObstaculoSup[i][1]+5 > ByY){// verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
-                       if(ByX >= 0){// se jog estiver acima da barreira Bx sera positivo
-                         ByX = Math.abs(ByX);
-                         if(tamanhoObstaculoSup[i][0] > ByX){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
-                            if(direObstSupY[i] == 1){
-                                direObstSupY[i]=-1;
-                            }else if(direObstSupY[i] == -1){
-                                direObstSupY[i]=1;
-                            }
-                         }
-         
-                             }else{// se jog estiver abaixo da barreira By sera negativo 
-                                 ByX = Math.abs(ByX);
-                                 if(tamanhoBarreira[i][0] > ByX){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
-                                   
-                                 
-                                    if(direObstSupX[i] == 1){
-                                        direObstSupX[i]=-1;
-                                    }else if(direObstSupX[i] == -1){
-                                        direObstSupX[i]=1;
-                                    }
-                                     
-                                   }
-                             }
-                       }
-                     }else{//se o jog estiver a abaixo da barreira By sera negativo ( menor que 0)
-                         ByY = Math.abs(ByY);
-                         if(tamanhoBarreira[i][1]+5 > ByY){ // verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
-                             if(ByX >= 0){// se jog estiver acima da barreira By sera positivo
-                                 ByX = Math.abs(ByX);
-                                 if(tamanhoObstaculoSup[i][0] > ByX){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
-                                    if(direObstSupX[i] == 1){
-                                        direObstSupX[i]=-1;
-                                    }else if(direObstSupX[i] == -1){
-                                        direObstSupX[i]=1;
-                                    }
-                                 }
-                                   }else{// se jog estiver esquerda da barreira Bx sera negativo 
-                                     ByX = Math.abs(ByX);
-                                     if(tamanhoBarreira[i][0] > ByX){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
-                                       
-                                        if(direObstSupX[i] == 1){
-                                            direObstSupX[i]=-1;
-                                        }else if(direObstSupX[i] == -1){
-                                            direObstSupX[i]=1;
-                                        }
-                                             }
-                                   }
-                             }
-             
-                     }
-             }
-                 }
-         
-       
-
-        function logicaObstaculoSup(){
-            let i = 0;
-            for(i ; i<contadorObstaculoSup; i++){
-            let Ry ;
-            let Rx ;
-        
-               if(jogPosiX > posiX-30 && jogPosiX < posiX+30 && jogPosiY > posiY-30 && jogPosiY < posiY+30){
-                    Ry = posiY - jogPosiY;
-                    Rx = posiX - jogPosiX;
-               }
-                if(Ry >= 0){
-                         Ry = Math.abs(Ry);
-                         if(tamanhoJogador[1] > Ry){
-                            verificaColisaoY = true;    
-                                  
-                        }
-                    }
-                    else{
-                        Ry = Math.abs(Ry);
-                        if(tamanhoObstaculoSup[i][1] > Ry){
-                            verificaColisaoY = true;  
-                            
-                        }
-                    }
-                    if(Rx >= 0){
-                         Rx = Math.abs(Rx);
-                         if(tamanhoJogador[0] > Rx){
-                            verificaColisaoX = true;        
-                        }
-                    }else{
-                        Rx = Math.abs(Rx);
-                        if(tamanhoObstaculoSup[i][0] > Rx){
-                            verificaColisaoX = true;       
-                        } 
-                    }
-            }
-            
-        }
-        function moveObstaculoSup(){
-            
-            let i=0;
-              for(i ;i<contadorObstaculoSup;i++){
-              
-               posicaoObstaculoSup[i][0]+= direObstSupX[i]*obstaculoVel[vel]; 
-               posicaoObstaculoSup[i][1]+= direObstSupY[i]*obstaculoVel[vel]; 
-       
-           
-   
-              
-             novoObstaculo[i].style.left=posicaoObstaculoSup[i][0]+"px";
-             novoObstaculo[i].style.top=posicaoObstaculoSup[i][1]+"px";
-
-            // novoObstaculo[1].style.left=posicaoObstaculoSup[1][0]+"px";
-        //  novoObstaculo[1].style.top=posicaoObstaculoSup[1][1]+"px";
-
-            
-   
-               if(posicaoObstaculoSup[i][1] > limiteCampoBaixo){
-                direObstSupY[i]=-1;
-               }else if(posicaoObstaculoSup[i][1] <  limiteCampoCima){
-                direObstSupY[i]=1;      
-               }
-               if(posicaoObstaculoSup[i][0] > limiteCampoDir){
-                direObstSupX[i]=-1;
-               }else if(posicaoObstaculoSup[i][0] <  limiteCampoEsq){
-                direObstSupX[i]=1;     
-               }
-              
-           }
-           }
-        frameObstaculoSup();
-        function frameObstaculoSup(){
-            if(verificaRequestFrame == true){
-                logicaBarreiraObstaculo();
-                logicaObstaculoSup();
-               moveObstaculoSup();
-              anima=requestAnimationFrame(frameObstaculoSup)
-            }
-             }
             
              contadorObstaculoSup++;
     }
@@ -735,8 +728,6 @@ function novaFase(){
         }else if(posiX <  limiteCampoEsq){
             direX=1;     
         }
-
-
         
     }
      function logicaColisao(){
@@ -777,21 +768,32 @@ function novaFase(){
            if(verificaRequestFrame == true){
             moveObst();
             logicaColisao();
-            verificaVencedor();
+
              anima=requestAnimationFrame(requestFrame)
            }
             }
-           
 }
 
-
-
 }
+Frame();
+function Frame(){
+    console.log(verificaRequestFrame);
+   if(verificaRequestFrame == true){
+    moveObstaculoSup();
+    logicaObstaculoSup();
+    logicaBarreiraObstaculo();
+
+    a
+     anima=requestAnimationFrame(Frame)
+   }
+   
+    }
 
 function enterFrame(){
+    if(verificaRequestFrame == true){
     attPosiJog();     
-     logicaBarreira();
-    validaMovimento();
+    logicaBarreira();
+    validaMovimento();  
     verificaColisao();
     verificaVencedor();
     
@@ -799,8 +801,33 @@ function enterFrame(){
     verificaColisaoY = false;   
     verificaColisao2X = false;
     verificaColisao2Y = false;  
-  
+    }
 }
+
+
+/*
+frame();
+function frame(){
+if(verificaRequestFrame == true){
+    attPosiJog();     
+    logicaBarreira();
+    validaMovimento();
+    moveObstaculoSup();
+    logicaObstaculoSup();
+    logicaBarreiraObstaculo();
+    verificaColisao();
+    verificaVencedor();
+    
+    verificaColisaoX = false;
+    verificaColisaoY = false;   
+    verificaColisao2X = false;
+    verificaColisao2Y = false; 
+    anima=requestAnimationFrame(frame);
+
+    }
+}
+
+*/
 function verificaVencedor(){
     let fimVencerY = vencerPosiXeY[1]+75;
     let fimVencerX = vencerPosiXeY[0]+70;
@@ -827,8 +854,6 @@ function verificaVencedor(){
       nFase+=1;
    
     document.querySelector('.telaJogo').remove();
-   
-   
    
     verificaRequestFrame = false;
     chamaFase();
