@@ -34,17 +34,14 @@ var criaElemento = new novaFase();
 */
 
 
-
 criaElemento.newJogador();
 function iniciar(){
     timeMovePlayer = setInterval(enterFrame , 15);
 
 }
-
     
    // criaElemento.newNivel(0,0,function(){});
     
-
 
 capturaElementosDom();
 window.addEventListener('keydown', capturaTeclaPress);
@@ -59,11 +56,8 @@ document.getElementById('apaga').addEventListener('click', function(){
     //document.getElementById('1').style.display = 'none';
     //document.getElementById('1').remove();
    // parar();
-  
 
- 
  })
-
 
  function logicaBarreira(){
    let i = 0
@@ -79,69 +73,75 @@ document.getElementById('apaga').addEventListener('click', function(){
     ByX = posicaoBarreira[i][0] - jogPosiX;
     ByY = posicaoBarreira[i][1]- jogPosiY;
 
-    if(BxX >= 0){//se jog estiver a direita da barreira Bx sera positivo ( maior que 0)
-        BxX = Math.abs(BxX); // transforma Bx em positivo
-        if(tamanhoJogador[0]+5 > BxX){// verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
+    
+    if(BxX >= 0){
+        BxX = Math.abs(BxX); 
+        if(tamanhoJogador[0]+5 > BxX){
           if(BxY <= 0){
             BxY = Math.abs(BxY);
-            if(tamanhoBarreira[i][1] > BxY){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
-            flechaDir = false;
-            jogPosiX += -1 ;
-            jog.style.left = jogPosiX+'px';
-           
+            if(tamanhoBarreira[i][1] > BxY){
+                //jogador a direita do ponto X e abaixo do ponto Y da barreira
+                flechaDir = false;
                 }
                 }else{
                     BxY = Math.abs(BxY);
-                    if(tamanhoJogador[1] > BxY){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
-                    flechaDir = false;
-                  
+                    if(tamanhoJogador[1] > BxY){
+                   //jogador a direta do ponto X  e acima do ponto Y da barreira
+                         flechaDir = false;                  
                     }
                 }
           }
-        }else{//se o jog estiver a esquerda da barreira Bx sera negativo ( menor que 0)
+        }else{
             BxX = Math.abs(BxX);
-            if(tamanhoBarreira[i][0]+2 > BxX){ // verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
-                if(BxY <= 0){// se jog estiver acima da barreira By sera positivo
+            if(tamanhoBarreira[i][0]+2 > BxX){
+                if(BxY <= 0){
                     BxY = Math.abs(BxY);
-                  if(tamanhoBarreira[i][1] > BxY){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                  if(tamanhoBarreira[i][1] > BxY){
+                    //jogador a esquerda do ponto X  e abaixo do ponto Y da barreira
                     flechaEsq = false;
+
                       }
                 }
                 else{
                     BxY = Math.abs(BxY);
-                    if(tamanhoJogador[1] > BxY){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
-                    flechaEsq = false;
+                    if(tamanhoJogador[1] > BxY){
+                          //jogador a esquerda do ponto X  e acima do ponto Y da barreira
+                        flechaEsq = false;
                     }
                 }
             }
         }     
-        if(ByY >= 0){//se jog estiver a acima da barreira By sera positivo ( maior que 0)
-            ByY = Math.abs(ByY); // transforma Bx em positivo
-            if(tamanhoJogador[1]+5 > ByY){// verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
-              if(ByX >= 0){// se jog estiver acima da barreira Bx sera positivo
+        if(ByY >= 0){
+            ByY = Math.abs(ByY);
+            if(tamanhoJogador[1]+5 > ByY){
+              if(ByX >= 0){
                 ByX = Math.abs(ByX);
-                if(tamanhoJogador[0] > ByX){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                if(tamanhoJogador[0] > ByX){
+                    //jogador acima do ponto Y e a direita do ponto X da barreira
                     flechaBaixo = false;
                 }
 
-                    }else{// se jog estiver abaixo da barreira By sera negativo 
+                    }else{
                         ByX = Math.abs(ByX);
-                        if(tamanhoBarreira[i][0] > ByX){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                        if(tamanhoBarreira[i][0] > ByX){
+                           //jogador acima do ponto Y e a esquerda do ponto X da barreira
                             flechaBaixo = false;
                           }
                     }
               }
-            }else{//se o jog estiver a abaixo da barreira By sera negativo ( menor que 0)
+            }else{
                 ByY = Math.abs(ByY);
-                if(tamanhoBarreira[i][1]+5 > ByY){ // verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
-                    if(ByX >= 0){// se jog estiver acima da barreira By sera positivo
+                if(tamanhoBarreira[i][1]+5 > ByY){ 
+                    if(ByX >= 0){
                         ByX = Math.abs(ByX);
-                        if(tamanhoJogador[0] > ByX){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                        if(tamanhoJogador[0] > ByX){
+                             //jogador abaixo do ponto Y e a esquerda do ponto X da barreira
                             flechaCima = false;
                         }
-                          }else{// se jog estiver esquerda da barreira Bx sera negativo 
+                          }else{
                             ByX = Math.abs(ByX);
-                            if(tamanhoBarreira[i][0] > ByX){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                            if(tamanhoBarreira[i][0] > ByX){
+                                 //jogador abaixo do ponto Y e a direita do ponto X da barreira
                                 flechaCima = false;
                                     }
                           }
@@ -159,11 +159,9 @@ document.getElementById('apaga').addEventListener('click', function(){
     let Rx ;
 
        if(jogPosiX > posicaoObstaculoSup[i][0]-35 && jogPosiX < posicaoObstaculoSup[i][0]+35 && jogPosiY > posicaoObstaculoSup[i][1]-35 && jogPosiY          < posicaoObstaculoSup[i][1]+35){
-         
             Ry = posicaoObstaculoSup[i][1] - jogPosiY;
             Rx = posicaoObstaculoSup[i][0] - jogPosiX;
-          
-       }
+            }
         if(Ry >= 0){
                  Ry = Math.abs(Ry);
                  if(tamanhoJogador[1] > Ry){
@@ -218,17 +216,9 @@ document.getElementById('apaga').addEventListener('click', function(){
            }
            }
            function logicaBarreiraObstaculo(){
-         
-           
 
-           // while (b<contador) {
-                
-          
-            for (var b = 0 ; b < contador; b++) {
-             //   while (i<contadorObstaculoSup) {
-                    
-         
-             for (var i = 0 ; i < contadorObstaculoSup; i++) {
+            for (let b = 0 ; b < contador; b++) {
+             for (let i = 0 ; i < contadorObstaculoSup; i++) {
         
                  let BxY;
                  let BxX;
@@ -239,20 +229,68 @@ document.getElementById('apaga').addEventListener('click', function(){
               BxY = posicaoBarreira[b][1]- posicaoObstaculoSup[i][1];
               ByX = posicaoBarreira[b][0] - posicaoObstaculoSup[i][0];
               ByY = posicaoBarreira[b][1]- posicaoObstaculoSup[i][1];
-            
-            
-             if(BxX >= 0){//se jog estiver a direita da barreira Bx sera positivo ( maior que 0)
-                BxX = Math.abs(BxX); // transforma Bx em positivo
-                 if(tamanhoObstaculoSup[i][0]+5 > BxX){// verifica se o tamanho do jogador é maior doq a distancia entre ele e a barreira/ se verdadeiro há colisao
+
+
+              if(BxX >= 0){
+                if(BxY >= 0){
+                BxY = Math.abs(BxY);
+                if(tamanhoObstaculoSup[i][1]+4 > BxY){
+                    //obstaculo acima do ponto Y e a esquerda do ponto X da barreira
+                    if(direObstSupY[i]==1){
+                        direObstSupY[i]=-1;
+                      }
+                }
+              }else{
+                BxY = Math.abs(BxY);
+                  if(tamanhoBarreira[b][1]+4 > BxY){
+                      //obstaculo abaixo do ponto Y e a esquerda do ponto X da barreira
+                      if(direObstSupY[i]==-1){
+                        direObstSupY[i]=1;
+                      }
+                  }
+              }
+            }else{
+                if(BxY >= 0){
+                    BxY = Math.abs(BxY);
+                    if(tamanhoObstaculoSup[i][1]+4 > BxY){
+                        //obstaculo acima do ponto Y e a direita do ponto X da barreira
+                      if(direObstSupY[i]==1){
+                          direObstSupY[i]=-1;
+                        }
+                    }
+                  }else{
+                    BxY = Math.abs(BxY);
+                      if(tamanhoBarreira[b][1]+4 > BxY){
+                          //obstaculo abaixo do ponto Y e a direita do ponto X da barreira
+                          if(direObstSupY[i]==-1){
+                            direObstSupY[i]=1;
+                          }
+                      }
+                  }
+            }/*
+            if(BxY >= 0){
+                if(BxX >= 0){
+                    BxX = Math.abs(BxX); 
+                    if(tamanhoObstaculoSup[i][0]+4 > BxX){
+                        direObstSupX[i]=-1;
+                   
+                    }
+                }
+            }*/
+
+       
+
+
+            /*
+             if(BxX >= 0){
+                BxX = Math.abs(BxX); 
+                 if(tamanhoObstaculoSup[i][0]+5 > BxX){
                    if(BxY <= 0){
                      BxY = Math.abs(BxY);
-                     if(tamanhoBarreira[b][1] > BxY){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                     if(tamanhoObstaculoSup[i][1] > BxY){
+
+                         direObstSupY[i]=-1;
                          }
-                         }else{
-                             BxY = Math.abs(BxY);
-                             if(tamanhoObstaculoSup[i][1] > BxY){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
-                                direObstSupY[i]=1;
-                             }
                          }
                    }
                  }else{//se o jog estiver a esquerda da barreira Bx sera negativo ( menor que 0)
@@ -272,9 +310,9 @@ document.getElementById('apaga').addEventListener('click', function(){
                              BxY = Math.abs(BxY);
                              if(tamanhoObstaculoSup[i][1] > BxY){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
                                 if(direObstSupY[i] == 1){
-                                    direObstSupY[i]=-1;
+                                  //  direObstSupY[i]=-1;
                                 }else if(direObstSupY[i] == -1){
-                                    direObstSupY[i]=1;
+                                   // direObstSupY[i]=1;
                                 }
                              }
                          }
@@ -286,19 +324,21 @@ document.getElementById('apaga').addEventListener('click', function(){
                        if(ByX >= 0){// se jog estiver acima da barreira Bx sera positivo
                          ByX = Math.abs(ByX);
                          if(tamanhoObstaculoSup[i][0] > ByX){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
-                            if(direObstSupY[i] == 1){
-                                direObstSupY[i]=-1;
+                            direObstSupY[i]=-1;
+                          
+                            /*if(direObstSupY[i] == 1){
+                             
                             }else if(direObstSupY[i] == -1){
-                                direObstSupY[i]=1;
+                               // direObstSupY[i]=1;
                             }
                          }
          
                              }else{// se jog estiver abaixo da barreira By sera negativo 
                                  ByX = Math.abs(ByX);
-                                 if(tamanhoBarreira[b][0] > ByX){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
+                                 if(tamanhoObstaculoSup[i][0] > ByX){//verifica se o tamanho da barreira é maior doq a distancia entre a barreira e o jogador// há colisao
                                    
-                                 
-                                    if(direObstSupX[i] == 1){
+                                    direObstSupX[i]=1;
+                                  /*  if(direObstSupX[i] == 1){
                                         direObstSupX[i]=-1;
                                     }else if(direObstSupX[i] == -1){
                                         direObstSupX[i]=1;
@@ -330,9 +370,9 @@ document.getElementById('apaga').addEventListener('click', function(){
                                         }
                                              }
                                    }
-                             }
+                             }*/
              
-                     }
+                     //}
         //     i++
     }
         //    b++

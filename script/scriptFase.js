@@ -35,7 +35,7 @@ function chamaFase(){
 document.getElementById('chama').addEventListener('click', function(){
   // document.querySelector('.telaJogo').remove();
 
-  nivel1();
+  nivel6();
   iniciar();
      
  })
@@ -186,10 +186,31 @@ function nivel6(){
         verificaRequestFrame == true
         criaElemento.newNivel(1000,200,function(){
           
-            criaElemento.newObstaculoSup(400,400,0,1,0);
+           criaElemento.newObstaculoSup(140,0,0,1,.5);
+           criaElemento.newObstaculoSup(300,0,0,1,.5);
 
+           criaElemento.newObstaculoSup(140,500,0,1,.5);
+           criaElemento.newObstaculoSup(300,500,0,1,.5);
+
+           criaElemento.newObstaculoSup(640,0,0,1,.4);
+           criaElemento.newObstaculoSup(800,0,0,1,.4);
+
+           criaElemento.newObstaculoSup(640,500,0,1,.4);
+           criaElemento.newObstaculoSup(800,500,0,1,.4);
+
+
+           criaElemento.newObstaculoSup(0,350,1,0,4);
+         //  criaElemento.newObstaculoSup(0,190,1,0,4);
+
+         //  criaElemento.newObstaculoSup(400,350,1,0,4);
+         //  criaElemento.newObstaculoSup(400,190,1,0,4);
+
+        //   criaElemento.newObstaculoSup(1000,350,1,0,4);
+         //  criaElemento.newObstaculoSup(1000,190,1,0,4);
            
-            criaElemento.newBarreira(100,0,5,450);
+            criaElemento.newBarreira(150,200,200,200);
+
+            criaElemento.newBarreira(650,200,200,200);
            
 
 
