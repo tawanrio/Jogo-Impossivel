@@ -6,38 +6,39 @@ html{    margin-top: -1px;   }
         position: relative;
         justify-content: space-evenly;
         background-color: rgb(141, 238, 209);
+        background: radial-gradient(circle, rgb(126, 240, 230) 20%, rgb(13, 231, 184) 100%);    
         max-width: 1060px;
         height: 550px;
         cursor: pointer;
     }
    
     #jog{
-        width: 30px;
-        height: 30px;
-    
+        width: 45px;
+        height: 45px;
         position: relative;
-        background-color: rgb(230, 255, 1);
-        border: solid black 2px;
+        
+        background-image: url(/img/will.png);
+       
         z-index: 1;
     }
     .obstaculos{
-        width: 30px;
-        height: 30px;
         position: absolute;
         background-color: rgb(106, 245, 106);
         border: solid black 2px;
+        z-index: 1;
     }
     .obstaculoSup{
         position: absolute;
-        background-color: red;
-        border: solid black 2px;
+        
+        background-image: url(/img/lata2.png);
+       
     }
     #vencer{
         width: 60px;
         height: 60px;
-        background-color: rgb(0, 110, 255);
+        background-image: url(/img/cama.png);
         position: relative;
-       
+      
     }
     #botao{
         width: 20px;
@@ -49,3 +50,58 @@ html{    margin-top: -1px;   }
         background-color: black;
         border: solid black 2px;
     }
+    #t1{
+      
+    }
+    #telaInicio,#telaCreditos{
+        position: absolute;
+        background-image: url(/img/muro.jpg);
+        width: 1060px;
+        height: 550px;
+        z-index: 2;
+    }
+    #telaCreditos{
+        display: none;
+       
+    }
+    h2{
+      
+        font-size: 45px;
+        padding: 30px;
+        font-family: cursive;
+        margin: 50px auto;
+        height: 300px;
+        text-align: center;
+        background-color: rgba(236, 223, 223, 0.5);
+        border-radius: 45px;
+        width: 850px;
+    }
+    #btnVoltar{
+        margin-top: 50px;
+        color: black;
+        font-weight: 100px;
+    }
+    h1{
+        opacity: 1;
+        color: white;
+        font-size: 85px;
+        text-align: center;
+        
+        z-index: 3;
+      border-radius: 45px;
+        border: solid black 5px;
+    }
+.btn{
+    width: 300px;
+    text-align: center;
+    font-size: 40px;
+    border-radius: 45px;
+    margin: 20px auto;
+    background-color: silver;
+    padding: 10px;
+    font-family: cursive;
+    border: solid black 4px
+}
+.btn:hover{
+    background-color: rgb(255, 255, 255);
+}

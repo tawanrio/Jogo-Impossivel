@@ -2,36 +2,50 @@ var verificaColisaoX , verificaColisao2X , verificaColisaoY , verificaColisao2Y 
 var flechaCima , flechaEsq , flechaDir , flechaBaixo , tecla , jog ;
 
 var limiteCampoCima = -1;
-var limiteCampoBaixo = 519;
+var limiteCampoBaixo = 550;
 var limiteCampoEsq = -1;
-var limiteCampoDir = 1026;
-
+var limiteCampoDir = 1060;
 var jogDireX=0;
 var jogDireY=85;
 var jogPosiX=0;
 var jogPosiY=0;
 
+var validaBarreira = false;
+
 function capturaElementosDom(){
     jog=document.getElementById('jog');
     barreira=document.getElementById('barreira');
 }
+document.getElementById('creditos').addEventListener('click', function(){
+  
+    document.querySelector('#telaInicio').style.display = 'none';
+    document.querySelector('#telaCreditos').style.display = 'flex';
+     
+ })
+ document.getElementById('btnVoltar').addEventListener('click', function(){
+  
+    document.querySelector('#telaInicio').style.display = 'block';
+    document.querySelector('#telaCreditos').style.display = 'none';
+     
+ })
+
 
 function limitaCampo(){
-    if(jogPosiX > limiteCampoDir){
+    if(jogPosiX+tamanhoJogador[0]> limiteCampoDir){
         flechaDir = false;
-        jogPosiX = limiteCampoDir;   
-
-        jog.style.left = jogPosiX+'px';
+      //  jogPosiX = limiteCampoDir;   
+      //  jog.style.left = jogPosiX+'px';
        
     }else if(jogPosiX < limiteCampoEsq){
-        jogPosiX = limiteCampoEsq+1;   
-        jogDireX = limiteCampoEsq+1;  
-        jog.style.left = jogPosiX+'px';
+        flechaEsq = false;
+        //jogPosiX = limiteCampoEsq+1;   
+      //  jogDireX = limiteCampoEsq+1;  
+       // jog.style.left = jogPosiX+'px';
     }
-    if(jogPosiY > limiteCampoBaixo){
+    if(jogPosiY+tamanhoJogador[1] > limiteCampoBaixo){
        flechaBaixo = false;
-       jogPosiY = limiteCampoBaixo-1;        
-       jog.style.top = jogPosiY+'px';
+     //  jogPosiY = limiteCampoBaixo-1;        
+       //jog.style.top = jogPosiY+'px';
     }else if(jogPosiY < limiteCampoCima){
         flechaCima = false;
         jogPosiY = limiteCampoCima+1;   
@@ -87,7 +101,8 @@ function validaMovimento(){
     case 'a':
            flechaEsq = true; 
        break;
-            }    
+            }   
+            
             
 }
 function capturaTeclaSolt(){
@@ -109,7 +124,7 @@ function capturaTeclaSolt(){
         case 'a':
           flechaEsq = false;          
             }
-           
+             
 }
 function attPosiJog(){
     jogPosiX=jogDireX*jogadorVel;
@@ -134,4 +149,35 @@ function verificaColisao(){
         jog.style.top = jogPosiY+'px';
     
     }
+}
+function verificaVencedor(){
+    let fimVencerY = vencerPosiXeY[1]+75;
+    let fimVencerX = vencerPosiXeY[0]+70;
+    if(jogPosiX >= vencerPosiXeY[0] && jogPosiY >= vencerPosiXeY[1]+35 && jogPosiX < fimVencerX && jogPosiY < fimVencerY){
+        let i= 0
+      for( i ; i < contador; i++){
+            tamanhoBarreira[i][0]=0;
+            posicaoBarreira[i][0]=0;
+            tamanhoBarreira[i][1]=0;
+            posicaoBarreira[i][1]=0;
+      }
+    contador=0;
+    contadorObstaculoSup =0;
+    posicaoObstaculoSup.length = 0;
+     
+    jogDireX = 0;
+    jogDireY = 85;
+    jogPosiX=jogDireX*jogadorVel;
+    jogPosiY=jogDireY*jogadorVel; 
+    jog.style.left = jogPosiX+'px';
+    jog.style.top = jogPosiY+'px';
+  
+    nFase+=1;
+  
+    document.querySelector('.telaJogo').remove();
+   
+    verificaRequestFrame = false;
+
+    chamaFase();
+    }  
 }
