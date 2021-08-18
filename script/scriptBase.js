@@ -10,6 +10,8 @@ var jogDireY=85;
 var jogPosiX=0;
 var jogPosiY=0;
 
+var numeroMorte=0;
+
 var validaBarreira = false;
 
 var audioMenu = document.getElementById('audioMenu').play()
@@ -29,6 +31,7 @@ btnCredito.addEventListener('mouseenter', function(){
  
 })
 */
+
 
 
 
@@ -204,7 +207,8 @@ function verificaColisao(){
         jogPosiY=jogDireY*jogadorVel;
         jog.style.left = jogPosiX+'px';
         jog.style.top = jogPosiY+'px';
-       
+        numeroMorte++;
+        document.getElementById('numMorte').innerText='Numero de Mortes:  '+numeroMorte;
         document.getElementById('audioSoco').play();
     
     }
