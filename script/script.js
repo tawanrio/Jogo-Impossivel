@@ -1,5 +1,5 @@
 var vencerPosiXeY=[];
-var tamanhoJogador = [45,45];
+var tamanhoJogador = [35,35];
 var jogadorVel=3;
 
 var tamanhoObstaculo = [];
@@ -38,7 +38,9 @@ var criaElemento = new novaFase();
 criaElemento.newJogador();
 function iniciar(){
     timeMovePlayer = setInterval(enterFrame , 15);
-
+}
+function parar(){
+    clearInterval(timeMovePlayer);
 }
     
    
@@ -49,12 +51,7 @@ window.addEventListener('keydown', capturaTeclaPress);
 window.addEventListener('keyup', capturaTeclaSolt);
 //timeMovePlayer = setInterval(enterFrame , 20);
 
-document.getElementById('apaga').addEventListener('click', function(){
-    
-   
-   
 
- })
 
  function logicaBarreira(){
    let i = 0
@@ -131,7 +128,7 @@ document.getElementById('apaga').addEventListener('click', function(){
     for(let i = 0 ; i<contadorObstaculoSup; i++){
     let Ry ;
     let Rx ;
-       if(jogPosiX > posicaoObstaculoSup[i][0]-35 && jogPosiX < posicaoObstaculoSup[i][0]+35 && jogPosiY > posicaoObstaculoSup[i][1]-35 && jogPosiY < posicaoObstaculoSup[i][1]+35){
+       if(jogPosiX > posicaoObstaculoSup[i][0]-tamanhoJogador[0] && jogPosiX < posicaoObstaculoSup[i][0]+tamanhoJogador[0] && jogPosiY > posicaoObstaculoSup[i][1]-tamanhoJogador[1] && jogPosiY < posicaoObstaculoSup[i][1]+tamanhoJogador[1]){
             Ry = posicaoObstaculoSup[i][1] - jogPosiY;
             Rx = posicaoObstaculoSup[i][0] - jogPosiX;
             }
@@ -171,12 +168,12 @@ document.getElementById('apaga').addEventListener('click', function(){
              novoObstaculo[i].style.top=posicaoObstaculoSup[i][1]+"px";
 
         
-               if(posicaoObstaculoSup[i][1]+tamanhoObstaculoSup[i][1] > limiteCampoBaixo){
+               if(posicaoObstaculoSup[i][1]+tamanhoObstaculoSup[i][1] > limiteCampoBaixo-6){
                 direObstSupY[i]=-1;
                }else if(posicaoObstaculoSup[i][1] <  limiteCampoCima){
                 direObstSupY[i]=1;      
                }
-               if(posicaoObstaculoSup[i][0]+tamanhoObstaculoSup[i][0] > limiteCampoDir){
+               if(posicaoObstaculoSup[i][0]+tamanhoObstaculoSup[i][0] > limiteCampoDir-6){
                 direObstSupX[i]=-1;
                }else if(posicaoObstaculoSup[i][0] <  limiteCampoEsq){
                 direObstSupX[i]=1;     
@@ -317,6 +314,8 @@ function novaFase(){
         const novoJogador = document.createElement("div");
         novoJogador.id = 'jog';
         document.querySelector('#container').insertAdjacentElement('beforeend', novoJogador);
+       novoJogador.style.width=tamanhoJogador[0]+'px';
+        novoJogador.style.height=tamanhoJogador[1]+'px';
     }
 
     this.newObstaculoSup = function(posiX,posiY,direX,direY,vel){
@@ -334,8 +333,8 @@ function novaFase(){
         posicaoObstaculoSup[contadorObstaculoSup][0]=posiX;
         posicaoObstaculoSup[contadorObstaculoSup][1]=posiY;
 
-       tamanhoObstaculoSup[contadorObstaculoSup][0]=50;
-        tamanhoObstaculoSup[contadorObstaculoSup][1]=50;
+       tamanhoObstaculoSup[contadorObstaculoSup][0]=27;
+        tamanhoObstaculoSup[contadorObstaculoSup][1]=27;
         
         novoObstaculo[contadorObstaculoSup].style.left=posicaoObstaculoSup[contadorObstaculoSup][0]+'px';
         novoObstaculo[contadorObstaculoSup].style.top=posicaoObstaculoSup[contadorObstaculoSup][1]+'px';
@@ -355,7 +354,7 @@ function novaFase(){
     tamanhoObstaculo[0]=tamX;
     tamanhoObstaculo[1]=tamY;
 
-    console.log(tamanhoObstaculo);
+  
 
 
     novoObst.style.width=tamanhoObstaculo[0] +"px";

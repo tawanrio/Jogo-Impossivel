@@ -34,9 +34,11 @@ function chamaFase(){
 }
 document.getElementById('jogar').addEventListener('click', function(){
   
-    let telaInicio;
   document.querySelector('#telaInicio').style.display = 'none';
 
+  somClick.play();
+  document.getElementById('audioFundo').play();
+  document.getElementById('audioMenu').pause();
   nivel1();
   iniciar();
      
@@ -128,7 +130,7 @@ function nivel4(){
 function nivel5(){
     tempIncio = setTimeout(function(){
         verificaRequestFrame == true
-        criaElemento.newNivel(1000,200,function(){
+        criaElemento.newNivel(1000,0,function(){
           
             criaElemento.newObstaculoSup(60,523,0,1,4);
             criaElemento.newObstaculoSup(120,410,0,1,4);
@@ -157,25 +159,19 @@ function nivel5(){
             
             
         
-        criaElemento.newBarreira(50,000,005,400);
-        criaElemento.newBarreira(50,400,105,005);
-        criaElemento.newBarreira(150,000,005,400);
+        criaElemento.newBarreira(57,000,105,400);
+        
 
-        criaElemento.newBarreira(250,150,5,400,0);
-        criaElemento.newBarreira(250,150,105,5);
-        criaElemento.newBarreira(350,150,5,400,0);
+        criaElemento.newBarreira(257,150,100,400);;
 
-        criaElemento.newBarreira(450,0,5,400,0);
-        criaElemento.newBarreira(450,400,105,5);
-        criaElemento.newBarreira(550,0,5,400,0);
+        criaElemento.newBarreira(457,0,100,400);
+       
 
-        criaElemento.newBarreira(650,150,005,400);
-        criaElemento.newBarreira(650,150,105,005);
-        criaElemento.newBarreira(750,150,005,400);
+        criaElemento.newBarreira(657,150,100,400);
+      
 
-        criaElemento.newBarreira(850,0,5,400);
-        criaElemento.newBarreira(850,400,105,5);
-        criaElemento.newBarreira(950,0,5,400);
+        criaElemento.newBarreira(857,0,100,400);
+      
 
 
 

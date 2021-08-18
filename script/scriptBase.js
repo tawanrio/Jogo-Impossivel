@@ -12,18 +12,75 @@ var jogPosiY=0;
 
 var validaBarreira = false;
 
+var audioMenu = document.getElementById('audioMenu').play()
+
+var somClick = document.getElementById('audioClick')
 function capturaElementosDom(){
     jog=document.getElementById('jog');
     barreira=document.getElementById('barreira');
 }
+
+
+var mute=false;
+/*
+btnCredito.addEventListener('mouseenter', function(){
+
+    document.getElementById('audioClick').play();
+ 
+})
+*/
+
+
+
+document.getElementById('config').addEventListener('click',function(){
+    somClick.play();
+    document.getElementById('menuJogo').style.display = 'block';
+    parar();
+    
+})
+document.getElementById('fechaMenu').addEventListener('click',function(){
+    somClick.play();
+    document.getElementById('menuJogo').style.display = 'none';
+    iniciar();
+})
+
+document.getElementById('voltarT2').addEventListener('click', function(){
+    parar();
+    somClick.play();
+    zeraJogo();
+    document.getElementById('audioFundo').pause();
+    document.getElementById('audioMenu').play();
+
+    document.getElementById('menuJogo').style.display = 'none';
+    document.querySelector('#telaInicio').style.display = 'block';
+})
+document.getElementById('btnSom').addEventListener('click', function(){
+    somClick.play();
+    if(mute==false){
+        document.getElementById('audioFundo').muted=true;
+        document.getElementById('btnSom').innerText= 'Música: Off'
+        mute = true;
+        }else{
+            document.getElementById('audioFundo').muted=false;
+            document.getElementById('audioFundo').play();
+            document.getElementById('btnSom').innerText= 'Música: On'
+            mute = false;
+            console.log('dentro else');
+        }
+        
+})
+
+
 document.getElementById('creditos').addEventListener('click', function(){
-  
     document.querySelector('#telaInicio').style.display = 'none';
     document.querySelector('#telaCreditos').style.display = 'flex';
+    somClick.play();
+  
      
  })
+
  document.getElementById('btnVoltar').addEventListener('click', function(){
-  
+    somClick.play();
     document.querySelector('#telaInicio').style.display = 'block';
     document.querySelector('#telaCreditos').style.display = 'none';
      
@@ -31,7 +88,7 @@ document.getElementById('creditos').addEventListener('click', function(){
 
 
 function limitaCampo(){
-    if(jogPosiX+tamanhoJogador[0]> limiteCampoDir){
+    if(jogPosiX+tamanhoJogador[0]> limiteCampoDir-6){
         flechaDir = false;
       //  jogPosiX = limiteCampoDir;   
       //  jog.style.left = jogPosiX+'px';
@@ -42,7 +99,7 @@ function limitaCampo(){
       //  jogDireX = limiteCampoEsq+1;  
        // jog.style.left = jogPosiX+'px';
     }
-    if(jogPosiY+tamanhoJogador[1] > limiteCampoBaixo){
+    if(jogPosiY+tamanhoJogador[1] > limiteCampoBaixo-6){
        flechaBaixo = false;
      //  jogPosiY = limiteCampoBaixo-1;        
        //jog.style.top = jogPosiY+'px';
@@ -147,13 +204,15 @@ function verificaColisao(){
         jogPosiY=jogDireY*jogadorVel;
         jog.style.left = jogPosiX+'px';
         jog.style.top = jogPosiY+'px';
+       
+        document.getElementById('audioSoco').play();
     
     }
 }
 function verificaVencedor(){
     let fimVencerY = vencerPosiXeY[1]+75;
     let fimVencerX = vencerPosiXeY[0]+70;
-    if(jogPosiX >= vencerPosiXeY[0] && jogPosiY >= vencerPosiXeY[1]+35 && jogPosiX < fimVencerX && jogPosiY < fimVencerY){
+    if(jogPosiX >= vencerPosiXeY[0] && jogPosiY >= vencerPosiXeY[1]+tamanhoJogador[1] && jogPosiX < fimVencerX && jogPosiY < fimVencerY){
         let i= 0
       for( i ; i < contador; i++){
             tamanhoBarreira[i][0]=0;
@@ -173,11 +232,33 @@ function verificaVencedor(){
     jog.style.top = jogPosiY+'px';
   
     nFase+=1;
-  
+    document.getElementById('audioVencer').play();
+
     document.querySelector('.telaJogo').remove();
    
     verificaRequestFrame = false;
 
     chamaFase();
     }  
+}
+function zeraJogo(){
+    let i= 0
+    for( i ; i < contador; i++){
+          tamanhoBarreira[i][0]=0;
+          posicaoBarreira[i][0]=0;
+          tamanhoBarreira[i][1]=0;
+          posicaoBarreira[i][1]=0;
+    }
+    contador=0;
+    contadorObstaculoSup =0;
+    posicaoObstaculoSup.length = 0;
+
+    jogDireX = 0;
+    jogDireY = 85;
+    jogPosiX=jogDireX*jogadorVel;
+    jogPosiY=jogDireY*jogadorVel; 
+    jog.style.left = jogPosiX+'px';
+    jog.style.top = jogPosiY+'px';
+
+    document.querySelector('.telaJogo').remove();
 }

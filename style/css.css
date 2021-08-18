@@ -1,6 +1,5 @@
 /*Referente a pagina*/
-html{    margin-top: -1px;   }
-
+html{    margin-top:-2px;   }
 #container{    
         border: solid black 6px;
         position: relative;
@@ -13,30 +12,31 @@ html{    margin-top: -1px;   }
     }
    
     #jog{
-        width: 45px;
-        height: 45px;
-        position: relative;
         
-        background-image: url(/img/will.png);
-       
+        position: relative;
+        border:solid black 3px;
+        background-color: greenyellow;
         z-index: 1;
     }
     .obstaculos{
         position: absolute;
         background-color: rgb(106, 245, 106);
-        border: solid black 2px;
+        
         z-index: 1;
+        border:solid black 3px;
+      
     }
     .obstaculoSup{
         position: absolute;
-        
-        background-image: url(/img/lata2.png);
+        border:solid black 3px;
+        background-color: red;
+        border-radius: 45%;
        
     }
     #vencer{
         width: 60px;
         height: 60px;
-        background-image: url(/img/cama.png);
+        background-color: green;
         position: relative;
       
     }
@@ -48,6 +48,7 @@ html{    margin-top: -1px;   }
     #barreira{
         position: absolute;
         background-color: black;
+        background-image: url(/img/muro2.jpg);
         border: solid black 2px;
     }
     #t1{
@@ -62,7 +63,6 @@ html{    margin-top: -1px;   }
     }
     #telaCreditos{
         display: none;
-       
     }
     h2{
       
@@ -86,10 +86,9 @@ html{    margin-top: -1px;   }
         color: white;
         font-size: 85px;
         text-align: center;
-        
-        z-index: 3;
-      border-radius: 45px;
-        border: solid black 5px;
+        padding: 0px 0px 10px 0px;
+        background-color: rgba(41, 38, 38, 0.5); 
+        z-index: 3; 
     }
 .btn{
     width: 300px;
@@ -97,11 +96,60 @@ html{    margin-top: -1px;   }
     font-size: 40px;
     border-radius: 45px;
     margin: 20px auto;
-    background-color: silver;
+    
+    background: linear-gradient(180deg, rgb(165, 145, 101) 0%, rgb(143, 114, 65) 120%); 
     padding: 10px;
     font-family: cursive;
     border: solid black 4px
 }
 .btn:hover{
     background-color: rgb(255, 255, 255);
+    background: linear-gradient(180deg, rgb(143, 114, 65) 0%,rgb(165, 145, 101) 120%); 
 }
+#config{
+    position: absolute;
+    top: 0%;
+    left: 95.8%;
+    background-image: url(/img/engrenagem2.png);
+    width: 45px;
+    height: 45px;
+    opacity: 0.5;
+    
+}
+
+#menuJogo{
+    position: absolute;
+    left: 37%;
+    margin: 70px auto 0 auto;
+    border:solid black 3px;
+    background-image: url(/img/muro.jpg);
+    width: 300px;
+    height: 400px;
+    display: none;
+    z-index: 4;
+}
+#menuJogo > h3{
+    color: white;
+    text-align: center;
+    font-size: 35px;
+    padding: 10px;
+    background-color: rgba(15, 12, 12, 0.5);
+    margin-bottom: 70px;
+}
+#menuJogo > #btnSom,#menuJogo > #voltarT2{
+    
+    width: 120px;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    border: solid black 2px;
+}
+#menuJogo > #fechaMenu{
+    position: absolute;
+    left: 90%;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: cursive;
+    
+} 
+
