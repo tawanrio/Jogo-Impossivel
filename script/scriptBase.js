@@ -14,7 +14,7 @@ var numeroMorte=0;
 
 var validaBarreira = false;
 
-var audioMenu = document.getElementById('audioMenu').play()
+var audioMenu = document.getElementById('audioMenu');
 
 var somClick = document.getElementById('audioClick')
 function capturaElementosDom(){
@@ -31,19 +31,102 @@ btnCredito.addEventListener('mouseenter', function(){
  
 })
 */
+document.getElementById('container').style.width = limiteCampoDir+'px';
+document.getElementById('container').style.height = limiteCampoBaixo+'px';
+
+controlador();
+
+function controlador(){
+    var upLeft = document.getElementById('upLeft');
+    var up = document.getElementById('up');
+    var upRight = document.getElementById('upRight');
+    var left = document.getElementById('left');
+    var right = document.getElementById('right');
+    var downLeft = document.getElementById('downLeft');
+    var down = document.getElementById('down');
+    var downRight = document.getElementById('downRight');
+
+    upLeft.addEventListener('mouseenter', function(){
+        flechaCima = true;
+        flechaEsq = true;
+        console.log('dentro');
+    })
+    upLeft.addEventListener('mouseout', function(){
+        flechaCima = false;
+        flechaEsq = false;
+        console.log('fora');
+    })
+    upRight.addEventListener('mouseenter', function(){
+        flechaCima = true;
+        flechaDir = true;
+        console.log('dentro');
+    })
+    upRight.addEventListener('mouseout', function(){
+        flechaCima = false;
+        flechaDir = false;
+        console.log('fora');
+    })
+    downLeft.addEventListener('mouseenter', function(){
+        flechaBaixo = true;
+        flechaEsq = true;
+        console.log('dentro');
+    })
+    downLeft.addEventListener('mouseout', function(){
+        flechaBaixo = false;
+        flechaEsq = false;
+        console.log('fora');
+    })
+    downRight.addEventListener('mouseenter', function(){
+        flechaBaixo = true;
+        flechaDir = true;
+        console.log('dentro');
+    })
+    downRight.addEventListener('mouseout', function(){
+        flechaBaixo = false;
+        flechaDir = false;
+        console.log('fora');
+    })
+    
+    up.addEventListener('mouseenter', function(){
+        flechaCima = true;
+    })
+    left.addEventListener('mouseenter', function(){
+        flechaEsq = true;
+    })
+    down.addEventListener('mouseenter', function(){
+        flechaBaixo = true;
+    })
+    right.addEventListener('mouseenter', function(){
+        flechaDir = true;
+    })
+    up.addEventListener('mouseout', function(){
+        flechaCima = false;
+    })
+    left.addEventListener('mouseout', function(){
+        flechaEsq = false;
+    })
+    down.addEventListener('mouseout', function(){
+        flechaBaixo = false;
+    })
+    right.addEventListener('mouseout', function(){
+        flechaDir = false;
+    })
 
 
-
-
+}
 document.getElementById('config').addEventListener('click',function(){
     somClick.play();
     document.getElementById('menuJogo').style.display = 'block';
+     document.getElementById('controlador').style.display = 'none';
+     document.getElementById('config').style.display = 'none';
     parar();
     
 })
 document.getElementById('fechaMenu').addEventListener('click',function(){
     somClick.play();
     document.getElementById('menuJogo').style.display = 'none';
+    document.getElementById('controlador').style.display = 'flex';
+    document.getElementById('config').style.display = 'block';
     iniciar();
 })
 
@@ -53,7 +136,8 @@ document.getElementById('voltarT2').addEventListener('click', function(){
     zeraJogo();
     document.getElementById('audioFundo').pause();
     document.getElementById('audioMenu').play();
-
+    document.getElementById('config').style.display = 'none';
+    document.getElementById('controlador').style.display = 'none';
     document.getElementById('menuJogo').style.display = 'none';
     document.querySelector('#telaInicio').style.display = 'block';
 })
@@ -257,6 +341,7 @@ function zeraJogo(){
     contadorObstaculoSup =0;
     posicaoObstaculoSup.length = 0;
 
+    numeroMorte = 0;
     jogDireX = 0;
     jogDireY = 85;
     jogPosiX=jogDireX*jogadorVel;

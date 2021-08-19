@@ -7,14 +7,14 @@
     <title>Jogo Impossivel</title>
 </head>
 <body >
-    <audio id='audioFundo' src="/audio/Buttercu.mp3" loop='true'></audio>
-    <audio id='audioSoco' src="/audio/soco.mp3" ></audio>
-    <audio id='audioVencer' src="/audio/vencer.mp3" ></audio>
-    <audio id='audioMenu' src="/audio/vento.mp3" ></audio>
-    <audio id='audioClick' src="/audio/click.mp3" ></audio>
+    <audio id='audioFundo' src="audio/Buttercu.mp3" loop='true'></audio>
+    <audio id='audioSoco' src="audio/soco.mp3" ></audio>
+    <audio id='audioVencer' src="audio/vencer.mp3" ></audio>
+    <audio id='audioMenu' src="audio/vento.mp3" ></audio>
+    <audio id='audioClick' src="audio/click.mp3" ></audio>
   
     <div id="container">
-    <div id='telaInicio'>
+    <div  class='telaInicio' id='telaInicio'>
        
        <h1>Missão Impossível</h1>
    <div class="btn" id="jogar">Jogar</div>
@@ -36,7 +36,18 @@
     <div class="btn" id="btnSom">Música: On</div>
     <div class='btn' id="voltarT2">Sair</div>
 </div>
-<div id="numMorte">Numero de Mortes:  0</div>
+<div id="numMorte"></div>
+<div id='controlador'>
+    <div class="controlador" id="upLeft"></div>
+    <div class="controlador" id="up"></div>
+    <div class="controlador" id="upRight"></div>
+    <div class="controlador" id="left"></div>
+    <div id="wid"></div>
+    <div class="controlador" id="right"></div>
+    <div class="controlador" id="downLeft"></div>
+    <div class="controlador" id="down"></div>
+    <div class="controlador" id="downRight"></div>
+</div>
 </div>
 
     <script src="script/scriptBase.js"></script>

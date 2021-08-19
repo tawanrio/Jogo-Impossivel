@@ -39,14 +39,15 @@ document.getElementById('jogar').addEventListener('click', function(){
   somClick.play();
   document.getElementById('audioFundo').play();
   document.getElementById('audioMenu').pause();
-  nivel1();
   iniciar();
-     
+  
+  nivel1();
  })
 function nivel1(){
     
     tempIncio = setTimeout(function(){
     criaElemento.newNivel(1000,200,function(){
+        
      
         criaElemento.newObstaculoSup(150,0,0,1,4);
         criaElemento.newObstaculoSup(250,520,0,1,4);

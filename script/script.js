@@ -37,7 +37,11 @@ var criaElemento = new novaFase();
 
 criaElemento.newJogador();
 function iniciar(){
-    timeMovePlayer = setInterval(enterFrame , 15);
+    jog.style.display = 'block';
+    document.getElementById('config').style.display = 'block';
+    document.getElementById('controlador').style.display = 'flex';
+   document.getElementById('numMorte').innerText='Numero de Mortes:  '+numeroMorte;
+   timeMovePlayer = setInterval(enterFrame , 15);
 }
 function parar(){
     clearInterval(timeMovePlayer);
