@@ -1,28 +1,34 @@
-@charset "UTF-8";
 /*Referente a pagina*/
 html{    margin-top:-2px;   }
-#container{    
+#container{   
+    margin: auto; 
         border: solid black 6px;
         position: relative;
         justify-content: space-evenly;
         background-color: rgb(141, 238, 209);
         background: radial-gradient(circle, rgb(126, 240, 230) 20%, rgb(13, 231, 184) 100%);    
+        max-width: 1060px;
+        height: 550px;
         cursor: pointer;
     }
     #jog{
-        position: relative;
+        position: absolute;
         border:solid black 3px;
         background-color: greenyellow;
         z-index: 1;
-        display: none;
     }
     .obstaculos{
         position: absolute;
-        background-color: rgb(106, 245, 106);
-        
+        background-color: rgb(106, 245, 106); 
         z-index: 1;
         border:solid black 3px;
       
+    }
+    #base{
+        position: absolute;
+        width: 85px;
+        height: 90px;
+        background-color: rgb(73, 73, 230);
     }
     .obstaculoSup{
         position: absolute;
@@ -35,7 +41,7 @@ html{    margin-top:-2px;   }
         width: 60px;
         height: 60px;
         background-color: green;
-        position: relative;
+        position: absolute;
       
     }
     #botao{
@@ -46,19 +52,15 @@ html{    margin-top:-2px;   }
     #barreira{
         position: absolute;
         background-color: black;
-        background-image: url(img/muro2.jpg);
+        background-image: url(/img/muro2.jpg);
         border: solid black 2px;
     }
-   
     #telaInicio,#telaCreditos{
         position: absolute;
-        background-image: url(img/muro.jpg);
+        background-image: url(/img/muro.jpg);
         width: 1060px;
         height: 550px;
         z-index: 2;
-    }
-    .telaInicio{
-        background-image: url(img/muro.jpg);
     }
     #telaCreditos{
         display: none;
@@ -106,8 +108,9 @@ html{    margin-top:-2px;   }
     background: linear-gradient(180deg, rgb(143, 114, 65) 0%,rgb(165, 145, 101) 120%); 
 }
 #config{
-    position: absolute;
+    position: relative;
     top: 0%;
+    display: none;
     left: 95.8%;
     background-image: url(img/engrenagem2.png);
     background-color: red;
@@ -116,11 +119,9 @@ html{    margin-top:-2px;   }
     opacity: 0.5;
     
 }
-
 #menuJogo{
-    position: absolute;
-    left: 37%;
-    margin: 70px auto 0 auto;
+    position: relative;
+    margin: 7% auto ;
     border:solid black 3px;
     background-image: url(img/muro.jpg);
     width: 300px;
@@ -132,7 +133,6 @@ html{    margin-top:-2px;   }
     color: white;
     text-align: center;
     font-size: 35px;
-    margin-top: 50px;
     padding: 10px;
     background-color: rgba(15, 12, 12, 0.5);
     margin-bottom: 70px;
@@ -147,28 +147,26 @@ html{    margin-top:-2px;   }
 }
 #menuJogo > #fechaMenu{
     position: absolute;
-    left: 87%;
-    font-size: 35px;
-    color: white;
+    left: 90%;
+    font-size: 25px;
     font-weight: bold;
     font-family: cursive;
 } 
-#menuJogo > #fechaMenu:hover{
-    color: rgb(46, 35, 35);
-
-}
 #numMorte{
     width: 250px;
     height: 30px;
-    left: 39%;
+    left: 38%;
     font-size: 20px;
-    background-color: rgba(43, 16, 16, 0.5);
+    font-weight: bold;
+    background-color: rgba(235, 184, 184, 0.5);
+    z-index: 1;
     text-align: center;
     position: absolute;
     top: 0%;
 }
+
 #wid{
-    position: relative;
+   
     width:50px;
     margin: 2px;
     height: 50px;
@@ -176,16 +174,15 @@ html{    margin-top:-2px;   }
  
 }
 #controlador{
-    position: absolute;
+    position: relative;
     width: 200px;
-    top: 65%;
-    left: 3%;
+    top: 59%;
+    display: none;
+    left: 1%;
     flex-wrap: wrap;
-    display: none;  
     opacity: .4;
 }
 .controlador{
-    
     position: relative;
     background-color: rgb(9, 38, 100);
     margin:2px;
