@@ -1,4 +1,5 @@
 var vencerPosiXeY=[];
+var basePosi=[];
 var tamanhoJogador = [35,35];
 var jogadorVel=3;
 
@@ -20,6 +21,7 @@ var tamanhoBarreira = [];
 var posicaoBarreira = [];
 var contador = 0;
 
+var validaColisao = true;
 var verificaRequestFrame = true;
 
 var criaElemento = new novaFase();
@@ -33,10 +35,10 @@ var criaElemento = new novaFase();
 
 
 */
-
-
 criaElemento.newJogador();
+
 function iniciar(){
+    
     timeMovePlayer = setInterval(enterFrame , 15);
 }
 function parar(){
@@ -285,16 +287,30 @@ function novaFase(){
          validaBarreira=true;
     }
 
+    this.newBase = function(){
+        const base = document.createElement("div");
+        base.id = 'base';
+        this.elNovoNivel.insertAdjacentElement('beforeend', base);
+        base.style.left = basePosi[0]+'px';
+        base.style.top = basePosi[1]+'px';
+
+        jogPosiX = basePosi[0];
+        jogPosiY = basePosi[1]+28;
+        jog.style.left = jogPosiX+'px';
+        jog.style.top = jogPosiY+'px';
+       
+    }
+    
     this.newVencer = function(){
         const vencer = document.createElement("div");
         vencer.id = 'vencer';
         this.elNovoNivel.insertAdjacentElement('beforeend', vencer);
         vencer.style.left = vencerPosiXeY[0]+'px';
         vencer.style.top = vencerPosiXeY[1]+'px';
-
+      
     }
     
-    this.newNivel = function(vencerX,vencerY,callback){
+    this.newNivel = function(baseX,baseY,vencerX,vencerY,callback){
         nNivel+=1;
         novoNivel[nNivel] = document.createElement("div");
         this.elNovoNivel = novoNivel[nNivel];
@@ -305,10 +321,12 @@ function novaFase(){
         document.querySelector('#container').insertAdjacentElement('beforeend', novoNivel[nNivel]);
         
         //novoNivel[nNivel].style.display = 'none';
+        basePosi = [baseX,baseY];
         vencerPosiXeY = [vencerX,vencerY] ;
                       
         callback();
         criaElemento.newVencer();
+    
     }
     this.newJogador = function(){
         const novoJogador = document.createElement("div");
@@ -316,6 +334,7 @@ function novaFase(){
         document.querySelector('#container').insertAdjacentElement('beforeend', novoJogador);
        novoJogador.style.width=tamanhoJogador[0]+'px';
         novoJogador.style.height=tamanhoJogador[1]+'px';
+        
     }
 
     this.newObstaculoSup = function(posiX,posiY,direX,direY,vel){
@@ -431,10 +450,13 @@ function enterFrame(){
     if(validaBarreira == true){
         logicaBarreiraObstaculo(); 
     }
+    base();
     moveObstaculoSup();
     logicaBarreira();
-    validaMovimento();  
-    verificaColisao();
+    validaMovimento(); 
+    if(validaColisao==true){
+        verificaColisao();
+    } 
     verificaVencedor();
     verificaColisaoX = false;
     verificaColisaoY = false;   
