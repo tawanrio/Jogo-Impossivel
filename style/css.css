@@ -32,8 +32,9 @@ html{    margin-top:-2px;   }
     }
     .obstaculoSup{
         position: absolute;
-        border:solid black 3px;
+    
         background-color: red;
+        background: radial-gradient(closest-side, #e7dede, #e27777, #ff0000);
         border-radius: 45%;
        
     }
@@ -52,12 +53,12 @@ html{    margin-top:-2px;   }
     #barreira{
         position: absolute;
         background-color: black;
-        background-image: url(/img/muro2.jpg);
+        background-image: url(../img/muro2.jpg);
         border: solid black 2px;
     }
     #telaInicio,#telaCreditos{
         position: absolute;
-        background-image: url(/img/muro.jpg);
+        background-image: url(../img/muro.jpg);
         width: 1060px;
         height: 550px;
         z-index: 2;
@@ -112,8 +113,7 @@ html{    margin-top:-2px;   }
     top: 0%;
     display: none;
     left: 95.8%;
-    background-image: url(img/engrenagem2.png);
-    background-color: red;
+    background-image: url(../img/engrenagem2.png);
     width: 45px;
     height: 45px;
     opacity: 0.5;
@@ -123,7 +123,7 @@ html{    margin-top:-2px;   }
     position: relative;
     margin: 7% auto ;
     border:solid black 3px;
-    background-image: url(img/muro.jpg);
+    background-image: url(../img/muro.jpg);
     width: 300px;
     height: 400px;
     display: none;
