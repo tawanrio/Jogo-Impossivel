@@ -36,7 +36,7 @@ function iniciar(){
     
     jog.style.display = 'block';
      document.getElementById('config').style.display = 'block';
-     document.getElementById('controlador').style.display = 'flex';
+    // document.getElementById('controlador').style.display = 'flex';
     document.getElementById('numMorte').innerText='Numero de Mortes:  '+numeroMorte;
     timeMovePlayer = setInterval(enterFrame , 15);
 }

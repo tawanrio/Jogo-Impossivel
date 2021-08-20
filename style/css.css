@@ -13,9 +13,10 @@ html{    margin-top:-2px;   }
     }
     #jog{
         position: absolute;
-        border:solid black 3px;
+        border:solid rgb(0, 0, 0) 2px;
         background-color: greenyellow;
         z-index: 1;
+        background: radial-gradient(closest-side, #f9fdd4 3%, #ffee00 10%, #afac00);
     }
     .obstaculos{
         position: absolute;
@@ -28,21 +29,23 @@ html{    margin-top:-2px;   }
         position: absolute;
         width: 85px;
         height: 90px;
-        background-color: rgb(73, 73, 230);
+        background: radial-gradient(closest-side, #12033f, #1f0942 0%, #5426fa );
+        border:solid black 2px;
     }
     .obstaculoSup{
         position: absolute;
     
         background-color: red;
-        background: radial-gradient(closest-side, #e7dede, #e27777, #ff0000);
+        background: radial-gradient(circle, #f88989 , #e96666 25%, #ff0000 70%);
         border-radius: 45%;
-       
+        border:solid rgb(87, 61, 61) 1px;
     }
     #vencer{
         width: 60px;
         height: 60px;
-        background-color: green;
+        background: radial-gradient(closest-side, #51c473, #21cc85 0%, #00af1d);
         position: absolute;
+      
       
     }
     #botao{
@@ -116,7 +119,8 @@ html{    margin-top:-2px;   }
     background-image: url(../img/engrenagem2.png);
     width: 45px;
     height: 45px;
-    opacity: 0.5;
+    opacity: 0.8;
+    z-index: 2;
     
 }
 #menuJogo{

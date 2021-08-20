@@ -1,33 +1,43 @@
 function chamaFase(){
     switch (nFase){
         case 1:
+            nFase=1;
             nivel1();
         break;
         case 2:
+            nFase=2;
             nivel2();
         break;
         case 3:
+            nFase=3;
             nivel3();
         break;
         case 4:
+            nFase=4;
             nivel4();
         break;
         case 5:
+            nFase=5;
             nivel5();
         break;
         case 6:
+            nFase=6;
             nivel6();
         break;
         case 7:
+            nFase=7;
             nivel7();
         break;
         case 8:
+            nFase=8;
             nivel8();
         break;
         case 9:
+            nFase=9;
             nivel9();
         break;
         case 10:
+            nFase=10;
             nivel10();
         break;
     }  
@@ -42,7 +52,10 @@ document.getElementById('jogar').addEventListener('click', function(){
   document.getElementById('audioMenu').pause();
 
 
+  //altera a linha aqui para mudar a fase
   nivel1();
+
+
   iniciar();
      
  })
