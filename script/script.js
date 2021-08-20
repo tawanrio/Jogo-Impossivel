@@ -259,6 +259,12 @@ window.addEventListener('keyup', capturaTeclaSolt);
                                            //obstaculo abaixo do ponto Y e a direita do ponto X da barreira
                                             direObstSupX[i]=1;
                                         }  }  }  }  }  }  }  }
+
+function LogicaFase(){
+    this.colisaoJogador = function(){
+
+    }
+}
 function novaFase(){
     this.elNovoNivel;
       
@@ -362,7 +368,7 @@ function novaFase(){
 
              contadorObstaculoSup++;
     }
-    
+   
     this.newObst = function(posiX,posiY,direX,direY,tamX,tamY,vel){
     const novoObst = document.createElement("div");
     novoObst.className = 'obstaculos';
@@ -371,8 +377,6 @@ function novaFase(){
 
     tamanhoObstaculo[0]=tamX;
     tamanhoObstaculo[1]=tamY;
-
-  
 
 
     novoObst.style.width=tamanhoObstaculo[0] +"px";
@@ -438,7 +442,7 @@ function novaFase(){
             logicaColisao();
              anima=requestAnimationFrame(requestFrame)
            }
-            }
+                }
 }
 
 }

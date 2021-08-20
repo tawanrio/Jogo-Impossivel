@@ -46,6 +46,7 @@ function chamaFase(){
 document.getElementById('jogar').addEventListener('click', function(){
      
   document.querySelector('#telaInicio').style.display = 'none';
+  document.querySelector('#numFase').innerText ='Fase: '+ nFase;
 
   somClick.play();
   document.getElementById('audioFundo').play();

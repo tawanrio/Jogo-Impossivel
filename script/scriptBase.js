@@ -46,42 +46,42 @@ function controlador(){
     upLeft.addEventListener('mouseenter', function(){
         flechaCima = true;
         flechaEsq = true;
-        console.log('dentro');
+       
     })
     upLeft.addEventListener('mouseout', function(){
         flechaCima = false;
         flechaEsq = false;
-        console.log('fora');
+     
     })
     upRight.addEventListener('mouseenter', function(){
         flechaCima = true;
         flechaDir = true;
-        console.log('dentro');
+       
     })
     upRight.addEventListener('mouseout', function(){
         flechaCima = false;
         flechaDir = false;
-        console.log('fora');
+    
     })
     downLeft.addEventListener('mouseenter', function(){
         flechaBaixo = true;
         flechaEsq = true;
-        console.log('dentro');
+   
     })
     downLeft.addEventListener('mouseout', function(){
         flechaBaixo = false;
         flechaEsq = false;
-        console.log('fora');
+     
     })
     downRight.addEventListener('mouseenter', function(){
         flechaBaixo = true;
         flechaDir = true;
-        console.log('dentro');
+     
     })
     downRight.addEventListener('mouseout', function(){
         flechaBaixo = false;
         flechaDir = false;
-        console.log('fora');
+      
     })
     
     up.addEventListener('mouseenter', function(){
@@ -116,7 +116,9 @@ function controlador(){
 }
 document.getElementById('config').addEventListener('click',function(){
     somClick.play();
+    jog.style.display ='none';
     document.getElementById('menuJogo').style.display = 'block';
+    document.querySelector('.telaJogo').style.display = 'none';
      document.getElementById('controlador').style.display = 'none';
      document.getElementById('config').style.display = 'none';
     parar();
@@ -125,6 +127,8 @@ document.getElementById('config').addEventListener('click',function(){
 document.getElementById('fechaMenu').addEventListener('click',function(){
     somClick.play();
     document.getElementById('menuJogo').style.display = 'none';
+    jog.style.display ='block';
+    document.querySelector('.telaJogo').style.display = 'block';
     document.getElementById('controlador').style.display = 'flex';
     document.getElementById('config').style.display = 'block';
     iniciar();
@@ -152,7 +156,7 @@ document.getElementById('btnSom').addEventListener('click', function(){
             document.getElementById('audioFundo').play();
             document.getElementById('btnSom').innerText= 'Música: On'
             mute = false;
-            console.log('dentro else');
+      
         }
         
 })
@@ -300,7 +304,7 @@ function base(){
 
     if(jogPosiX+3 >= basePosi[0] && jogPosiY >= basePosi[1] && jogPosiX < tamBase[0] && jogPosiY < tamBase[1]){
         validaColisao = false;
-        console.log('tests');
+      
       
     }else{
         validaColisao = true;
@@ -319,6 +323,7 @@ function verificaVencedor(){
     
     nFase+=1;
     chamaFase();
+    document.querySelector('#numFase').innerText ='Fase: '+ nFase;
     }  
 }
 function zeraJogo(){
