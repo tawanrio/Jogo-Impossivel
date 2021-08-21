@@ -12,6 +12,7 @@ var posicaoObstaculoSup = [];
 var contadorObstaculoSup = 0;
 var direObstSupX = [];
 var direObstSupY = [];
+var cresc=1;
 
 var novoNivel =[];
 var nNivel=0;
@@ -357,8 +358,8 @@ function novaFase(){
         posicaoObstaculoSup[contadorObstaculoSup][0]=posiX;
         posicaoObstaculoSup[contadorObstaculoSup][1]=posiY;
 
-       tamanhoObstaculoSup[contadorObstaculoSup][0]=27;
-        tamanhoObstaculoSup[contadorObstaculoSup][1]=27;
+       tamanhoObstaculoSup[contadorObstaculoSup][0]=30;
+        tamanhoObstaculoSup[contadorObstaculoSup][1]=30;
         
         novoObstaculo[contadorObstaculoSup].style.left=posicaoObstaculoSup[contadorObstaculoSup][0]+'px';
         novoObstaculo[contadorObstaculoSup].style.top=posicaoObstaculoSup[contadorObstaculoSup][1]+'px';
@@ -437,18 +438,41 @@ function novaFase(){
         }
         requestFrame();
         function requestFrame(){
+          
            if(verificaRequestFrame == true){
             moveObst();
             logicaColisao();
              anima=requestAnimationFrame(requestFrame)
            }
                 }
+                frameObst=setInterval(function(){
+
+
+                    tamanhoObstaculo[0]+=cresc;
+                    tamanhoObstaculo[1]+=cresc;
+                    novoObst.style.width=tamanhoObstaculo[0] +"px";
+                    novoObst.style.height=tamanhoObstaculo[1] +"px";
+                    if(tamanhoObstaculo[0]<5 &&tamanhoObstaculo[1]<5){
+                        
+                       cresc=1;
+                       
+                    }else if(tamanhoObstaculo[0]>150 && tamanhoObstaculo[1]>150){
+                        cresc=-1;
+                        
+                    }
+                    console.log(cresc);
+
+                }, 200)
 }
 
 }
+
+
+
 frameRequest=setInterval(function(){verificaRequestFrame = true}, 250)
 function enterFrame(){
     attPosiJog();    
+
     logicaObstaculoSup();
     if(validaBarreira == true){
         logicaBarreiraObstaculo(); 
