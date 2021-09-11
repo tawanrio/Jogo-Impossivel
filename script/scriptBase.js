@@ -38,7 +38,6 @@ document.getElementById('config').addEventListener('click',function(){
     jog.style.display ='none';
     document.getElementById('menuJogo').style.display = 'block';
     document.querySelector('.telaJogo').style.display = 'none';
-     document.getElementById('controlador').style.display = 'none';
      document.getElementById('config').style.display = 'none';
     parar();
     
@@ -48,7 +47,7 @@ document.getElementById('fechaMenu').addEventListener('click',function(){
     document.getElementById('menuJogo').style.display = 'none';
     jog.style.display ='block';
     document.querySelector('.telaJogo').style.display = 'block';
-    document.getElementById('controlador').style.display = 'flex';
+   
     document.getElementById('config').style.display = 'block';
     iniciar();
 })
@@ -60,9 +59,11 @@ document.getElementById('voltarT2').addEventListener('click', function(){
     document.getElementById('audioFundo').pause();
     document.getElementById('audioMenu').play();
     document.getElementById('config').style.display = 'none';
-    document.getElementById('controlador').style.display = 'none';
+ 
     document.getElementById('menuJogo').style.display = 'none';
     document.querySelector('#telaInicio').style.display = 'block';
+   
+  
 })
 document.getElementById('btnSom').addEventListener('click', function(){
     somClick.play();
@@ -264,5 +265,6 @@ function zeraJogo(){
     jog.style.left = jogPosiX+'px';
     jog.style.top = jogPosiY+'px';
 
-    document.querySelector('.telaJogo').remove();
+
+   document.querySelector('.telaJogo').remove();
 }

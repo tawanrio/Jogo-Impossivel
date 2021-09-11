@@ -460,7 +460,7 @@ function novaFase(){
                         cresc=-1;
                         
                     }
-                    console.log(cresc);
+                   
 
                 }, 200)
 }
