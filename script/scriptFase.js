@@ -54,7 +54,7 @@ document.getElementById('jogar').addEventListener('click', function(){
 
 
   //altera a linha aqui para mudar a fase
-  nivel1();
+  nivel7();
 
 
   iniciar();
@@ -247,37 +247,144 @@ function nivel6(){
 function nivel7(){
     verificaRequestFrame == true
     tempIncio = setTimeout(function(){
-        criaElemento.newNivel(0,220,1000,230,function(){
+        criaElemento.newNivel(0,260,1000,0,function(){
             criaElemento.newBase();
-      //  criaElemento.newObst(150,0,0,1,0);  
+             criaElemento.newObstaculoSup(0,0,1,1,3);
+             criaElemento.newObstaculoSup(300,0,0,1,5);
+             criaElemento.newObstaculoSup(100,0,0,1,5);
+             criaElemento.newObstaculoSup(500,0,0,1,5);
+             criaElemento.newObstaculoSup(700,0,0,1,5);
+             criaElemento.newObstaculoSup(600,0,1,1,3);
+
+             criaElemento.newObstaculoSup(400,200,0,1,5);
+             criaElemento.newObstaculoSup(200,200,0,1,5);
+             criaElemento.newObstaculoSup(600,200,0,1,5);
+             criaElemento.newObstaculoSup(800,200,0,1,5);
+             criaElemento.newObstaculoSup(200,300,-1,-1,3);
+
+             criaElemento.newObstaculoSup(300,500,0,1,5);
+             criaElemento.newObstaculoSup(100,500,0,1,5);
+             criaElemento.newObstaculoSup(500,500,0,1,5);
+             criaElemento.newObstaculoSup(700,500,0,1,5);
+            
+             criaElemento.newObstaculoSup(900,500,0,1,5);
+             
+         
+         
+            
+            // criaElemento.newObstaculoSup(100,520,1,-1,5);
+  /*   criaElemento.newObstaculoSup(1000,500,-1,1,5);
+     criaElemento.newObstaculoSup(500,300,-1,-1,5);
+     criaElemento.newObstaculoSup(500,300,1,1,5);*/
+
+     criaElemento.newBarreira(70,160,800,50);
+     criaElemento.newBarreira(0,350,100,50);
+     criaElemento.newBarreira(190,350,790,50);
+     criaElemento.newBarreira(70,160,50,240);
+     criaElemento.newBarreira(950,0,50,400);
+	// criaElemento.newBarreira(320,0,50,490);
 
     });
 }, 250);
-}/*
+}
 function nivel8(){
     verificaRequestFrame == true
     tempIncio = setTimeout(function(){
-        criaElemento.newNivel(1000,200,function(){
-            criaElemento.newBarreira(0,0);
-        criaElemento.newObst(150,0,0,1,0);  
+        criaElemento.newNivel(0,220,1000,350,function(){
+            criaElemento.newBase();
+            let i=0;
+            do {
+                criaElemento.newObstaculoSup(i*42+10,15,0,0,2);
+                i++
+            } while (i<25);
+
+            let i1=0;
+            do {
+                criaElemento.newObstaculoSup(i1*42+10,60,0,0,2);
+                i1++
+            } while (i1<25);
+            let i2=0;
+            do {
+                criaElemento.newObstaculoSup(i2*42+10,105,0,0,2);
+                i2++
+            } while (i2<25);
+
+
+            let i3=0;
+            do {
+                criaElemento.newObstaculoSup(i3*42+10,415,0,0,2);
+                i3++
+            } while (i3<25);
+
+            let i4=0;
+            do {
+                criaElemento.newObstaculoSup(i4*42+10,460,0,0,2);
+                i4++
+            } while (i4<25);
+            let i5=0;
+            do {
+                criaElemento.newObstaculoSup(i5*42,505,0,0,2);
+                i5++
+            } while (i5<25);
+            let i6=0;
+            do {
+                criaElemento.newObstaculoSup(i6*42+10,i6*45+150,0,0,2);
+                i6++
+            } while (i6<5);
+            let i7=0;
+            do {
+                criaElemento.newObstaculoSup(270,i7*45+200,0,0,2);
+                i7++
+            } while (i7<5);
+            let i8=0;
+            do {
+                criaElemento.newObstaculoSup(i8*42+345,i8*45+150,0,0,2);
+                i8++
+            } while (i8<5);
+            let i9=0;
+            do {
+                criaElemento.newObstaculoSup(i9*42+530,i9*45+200,0,0,2);
+                i9++
+            } while (i9<5);
+            let i10=0;
+            do {
+                criaElemento.newObstaculoSup(770,i10*45+150,0,0,2);
+                i10++
+            } while (i10<5);
+            let i11=0;
+            do {
+                criaElemento.newObstaculoSup(975-i11*42,i11*45+247,0,0,2);
+                i11++
+            } while (i11<4);
+
+            criaElemento.newObstaculoSup(975,200,0,0,2);
+            //criaElemento.newObstaculoSup(1*42+10,195,0,0,2);
+            //criaElemento.newObstaculoSup(2*42+10,240,0,0,2);
+
+
     });
 }, 250);
 }
 function nivel9(){
     verificaRequestFrame == true
     tempIncio = setTimeout(function(){
-        criaElemento.newNivel(1000,200,function(){
-            criaElemento.newBarreira(0,0);
-        criaElemento.newObst(150,0,0,1,0);  
+        criaElemento.newNivel(0,220,1000,230,function(){
+            criaElemento.newBase();
+
+            for(let i=0;i<6;i++){
+                criaElemento.newObstaculoSup(i*150+95,0,0,1,3);
+                criaElemento.newObstaculoSup(i*150+145,0,0,1,4);
+                criaElemento.newObstaculoSup(i*150+195,0,0,1,5);
+            }
     });
 }, 250);
 }
 function nivel10(){
     verificaRequestFrame == true
     tempIncio = setTimeout(function(){
-        criaElemento.newNivel(1000,200,function(){
-            criaElemento.newBarreira(0,0);
-        criaElemento.newObst(150,0,0,1,0);  
+        criaElemento.newNivel(0,220,1000,230,function(){
+            criaElemento.newBase();
+          
     });
 }, 250);
-}*/
+}

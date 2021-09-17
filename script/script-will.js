@@ -1,6 +1,6 @@
 var vencerPosiXeY=[];
 var basePosi=[];
-var tamanhoJogador = [35,35];
+var tamanhoJogador = [45,45];
 var jogadorVel=3;
 
 var tamanhoObstaculo = [];
@@ -188,8 +188,8 @@ window.addEventListener('keyup', capturaTeclaSolt);
                     
             let BxX = posicaoBarreira[b][0] - posicaoObstaculoSup[i][0];
             let BxY = posicaoBarreira[b][1]- posicaoObstaculoSup[i][1];
-            let BdX = posicaoBarreira[b][0] - posicaoObstaculoSup[i][0];
-            let BdY = posicaoBarreira[b][1]- posicaoObstaculoSup[i][1];
+            let ByX = posicaoBarreira[b][0] - posicaoObstaculoSup[i][0];
+            let ByY = posicaoBarreira[b][1]- posicaoObstaculoSup[i][1];
 
              if(BxX >= 0){
                 BxX = Math.abs(BxX); 
@@ -197,76 +197,69 @@ window.addEventListener('keyup', capturaTeclaSolt);
                    if(BxY >= 0){
                      BxY = Math.abs(BxY);
                      if(tamanhoObstaculoSup[i][1] > BxY){
-                        if(direObstSupY[i] == 1 && direObstSupX[i]==0){
+                        if(direObstSupY[i] == 1){
                             //obstaculoa a esquerda do ponto X e acima do ponto Y da barreira
                             direObstSupY[i]=-1;
-                            }else if(direObstSupY[i] == 0 && direObstSupX[i]==1){
-                                direObstSupX[i]=-1;
                             }
                          }
-                       
                          }else{
                             BxY = Math.abs(BxY);
                             if(tamanhoBarreira[b][1] > BxY){
-                                if(direObstSupY[i] == -1 && direObstSupX[i]==0){
+                                if(direObstSupY[i] == -1){
                                      //obstaculoa a esquerda do ponto X e abaixo do ponto Y da barreira
                                     direObstSupY[i]=1;
-                                    }else if(direObstSupY[i] == 0 && direObstSupX[i]==1){
-                                        direObstSupX[i]=-1;
-                                    }else if(direObstSupY[i] == 1 && direObstSupX[i]==1){
-                                        direObstSupX[i]=-1;
-                                    }else if(direObstSupY[i] == -1 && direObstSupX[i]==1){
-                                        direObstSupX[i]=-1;
-                                    }
-                                   }   }    }
+                                    }   }   }    }
                  }else{
                      BxX = Math.abs(BxX);
                      if(tamanhoBarreira[b][0]+5 > BxX){ 
                          if(BxY >= 0){
                              BxY = Math.abs(BxY);
                            if(tamanhoObstaculoSup[i][1] > BxY){
-
-                        //    console.log(direObstSupY[i],direObstSupX[i]);
-
-                               if(direObstSupY[i] == 1 && direObstSupX[i]==0 ){
+                               if(direObstSupY[i] == 1){
                                    //obstaculoa a direita do ponto X e acima do ponto Y da barreira
                                 direObstSupY[i]=-1;
-                                }else if(direObstSupY[i] == 0 && direObstSupX[i]==-1){
-                                 
-                                    direObstSupX[i]=1;
-                                }else if(direObstSupY[i]==1 && direObstSupX[i]==1){
-                                    direObstSupY[i]=-1;
-                                }else if(direObstSupY[i]==1 && direObstSupX[i]==-1){
-                                    direObstSupY[i]=-1;
-                                }
-                               }   }
+                                }   }   }
                          else{
                              BxY = Math.abs(BxY);
                              if(tamanhoBarreira[b][1] > BxY){
-                                if(direObstSupY[i] == -1 && direObstSupX[i]==0){
+                                if(direObstSupY[i] == -1){
                                      //obstaculoa a direita do ponto X e abaixo do ponto Y da barreira
-                                     
                                     direObstSupY[i]=1;
-                                }else if(direObstSupY[i] == 0 && direObstSupX[i]==-1){
-                                    direObstSupX[i]=1;
-                                }else if(direObstSupY[i]==-1 && direObstSupX[i]==1){
-                                    direObstSupY[i]=1;
-                                }else if(direObstSupY[i]==-1 && direObstSupX[i]==-1){
-                                    BdX -= 10;
-                                    BdX = Math.abs(BdX);
-                                    if(tamanhoBarreira[b][0] > BdX){ 
-                                        direObstSupY[i]=1;
-                                    }else{
+                                }  }  }  }  }     
+                 if(ByY >= 0){
+                     ByY = Math.abs(ByY); 
+                     if(tamanhoObstaculoSup[i][1]+5 > ByY){
+                       if(ByX >= 0){
+                         ByX = Math.abs(ByX);
+                         if(tamanhoObstaculoSup[i][0] > ByX){                            
+                            if(direObstSupX[i] == 1){
+                                //obstaculo acima do ponto Y e a esquerda do ponto X da barreira
+                                direObstSupX[i]=-1;
+                            }   }
+                             }else{
+                                 ByX = Math.abs(ByX);
+                                 if(tamanhoBarreira[b][0] > ByX){                                 
+                                   if(direObstSupX[i] == -1){
+                                       //obstaculo acima do ponto Y e a direita do ponto X da barreira
                                         direObstSupX[i]=1;
-                                    }
-                                }else if(direObstSupY[i]==1 && direObstSupX[i]==-1){
-                                  
-                                    direObstSupX[i]=1;
-                                }
-                            
-                            }  }  }  }     
-
-                                }  }  }
+                                    }  }  }   }
+                     }else{
+                         ByY = Math.abs(ByY);
+                         if(tamanhoBarreira[b][1]+5 > ByY){ 
+                             if(ByX >= 0){
+                                 ByX = Math.abs(ByX);
+                                 if(tamanhoObstaculoSup[i][0] > ByX){
+                                    if(direObstSupX[i] == 1){
+                                    //obstaculo abaixo do ponto Y e a esquerda do ponto X da barreira
+                                        direObstSupX[i]=-1;
+                                    }     }
+                                   }else{ 
+                                     ByX = Math.abs(ByX);
+                                     if(tamanhoBarreira[b][0] > ByX){
+                                       if(direObstSupX[i] == -1){
+                                           //obstaculo abaixo do ponto Y e a direita do ponto X da barreira
+                                            direObstSupX[i]=1;
+                                        }  }  }  }  }  }  }  }
 
 function LogicaFase(){
     this.colisaoJogador = function(){
@@ -365,8 +358,8 @@ function novaFase(){
         posicaoObstaculoSup[contadorObstaculoSup][0]=posiX;
         posicaoObstaculoSup[contadorObstaculoSup][1]=posiY;
 
-       tamanhoObstaculoSup[contadorObstaculoSup][0]=30;
-        tamanhoObstaculoSup[contadorObstaculoSup][1]=30;
+       tamanhoObstaculoSup[contadorObstaculoSup][0]=50;
+        tamanhoObstaculoSup[contadorObstaculoSup][1]=50;
         
         novoObstaculo[contadorObstaculoSup].style.left=posicaoObstaculoSup[contadorObstaculoSup][0]+'px';
         novoObstaculo[contadorObstaculoSup].style.top=posicaoObstaculoSup[contadorObstaculoSup][1]+'px';
