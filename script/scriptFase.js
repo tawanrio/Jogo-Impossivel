@@ -247,42 +247,38 @@ function nivel6(){
 function nivel7(){
     verificaRequestFrame == true
     tempIncio = setTimeout(function(){
-        criaElemento.newNivel(0,260,1000,0,function(){
+        criaElemento.newNivel(0,420,1000,0,function(){
             criaElemento.newBase();
              criaElemento.newObstaculoSup(0,0,1,1,3);
-             criaElemento.newObstaculoSup(300,0,0,1,5);
-             criaElemento.newObstaculoSup(100,0,0,1,5);
-             criaElemento.newObstaculoSup(500,0,0,1,5);
-             criaElemento.newObstaculoSup(700,0,0,1,5);
+             criaElemento.newObstaculoSup(300,0,0,1,4.2);
+             criaElemento.newObstaculoSup(100,0,0,1,4.2);
+             criaElemento.newObstaculoSup(500,0,0,1,4.2);
+             criaElemento.newObstaculoSup(700,0,0,1,4.2);
              criaElemento.newObstaculoSup(600,0,1,1,3);
 
-             criaElemento.newObstaculoSup(400,200,0,1,5);
-             criaElemento.newObstaculoSup(200,200,0,1,5);
-             criaElemento.newObstaculoSup(600,200,0,1,5);
-             criaElemento.newObstaculoSup(800,200,0,1,5);
+             criaElemento.newObstaculoSup(400,200,0,1,4.2);
+             criaElemento.newObstaculoSup(200,200,0,1,4.2);
+             criaElemento.newObstaculoSup(600,200,0,1,4.2);
+             criaElemento.newObstaculoSup(800,200,0,1,4.2);
              criaElemento.newObstaculoSup(200,300,-1,-1,3);
 
-             criaElemento.newObstaculoSup(300,500,0,1,5);
-             criaElemento.newObstaculoSup(100,500,0,1,5);
-             criaElemento.newObstaculoSup(500,500,0,1,5);
-             criaElemento.newObstaculoSup(700,500,0,1,5);
-            
-             criaElemento.newObstaculoSup(900,500,0,1,5);
+             criaElemento.newObstaculoSup(190,500,0,1,4.2);
+             criaElemento.newObstaculoSup(390,500,0,1,4.2);
+             criaElemento.newObstaculoSup(590,500,0,1,4.2);
+             criaElemento.newObstaculoSup(790,500,0,1,4.2);
+             criaElemento.newObstaculoSup(970,500,0,1,4.2);
              
          
          
             
-            // criaElemento.newObstaculoSup(100,520,1,-1,5);
-  /*   criaElemento.newObstaculoSup(1000,500,-1,1,5);
-     criaElemento.newObstaculoSup(500,300,-1,-1,5);
-     criaElemento.newObstaculoSup(500,300,1,1,5);*/
+ 
 
-     criaElemento.newBarreira(70,160,800,50);
-     criaElemento.newBarreira(0,350,100,50);
+     criaElemento.newBarreira(70,150,800,50);
+     criaElemento.newBarreira(0,500,100,50);
      criaElemento.newBarreira(190,350,790,50);
-     criaElemento.newBarreira(70,160,50,240);
+     criaElemento.newBarreira(70,150,50,400);
      criaElemento.newBarreira(950,0,50,400);
-	// criaElemento.newBarreira(320,0,50,490);
+
 
     });
 }, 250);
@@ -290,7 +286,7 @@ function nivel7(){
 function nivel8(){
     verificaRequestFrame == true
     tempIncio = setTimeout(function(){
-        criaElemento.newNivel(0,220,1000,350,function(){
+        criaElemento.newNivel(0,220,1000,400,function(){
             criaElemento.newBase();
             let i=0;
             do {
@@ -303,7 +299,7 @@ function nivel8(){
                 criaElemento.newObstaculoSup(i1*42+10,60,0,0,2);
                 i1++
             } while (i1<25);
-            let i2=0;
+            /*let i2=0;
             do {
                 criaElemento.newObstaculoSup(i2*42+10,105,0,0,2);
                 i2++
@@ -315,7 +311,7 @@ function nivel8(){
                 criaElemento.newObstaculoSup(i3*42+10,415,0,0,2);
                 i3++
             } while (i3<25);
-
+*/
             let i4=0;
             do {
                 criaElemento.newObstaculoSup(i4*42+10,460,0,0,2);
@@ -323,7 +319,7 @@ function nivel8(){
             } while (i4<25);
             let i5=0;
             do {
-                criaElemento.newObstaculoSup(i5*42,505,0,0,2);
+                criaElemento.newObstaculoSup(i5*42+10,505,0,0,2);
                 i5++
             } while (i5<25);
             let i6=0;
@@ -333,33 +329,41 @@ function nivel8(){
             } while (i6<5);
             let i7=0;
             do {
-                criaElemento.newObstaculoSup(270,i7*45+200,0,0,2);
+                criaElemento.newObstaculoSup(270,i7*45+240,0,0,2);
                 i7++
             } while (i7<5);
             let i8=0;
             do {
-                criaElemento.newObstaculoSup(i8*42+345,i8*45+150,0,0,2);
+                criaElemento.newObstaculoSup(i8*42+270,i8*45+100,0,0,2);
                 i8++
-            } while (i8<5);
+            } while (i8<7);
             let i9=0;
             do {
-                criaElemento.newObstaculoSup(i9*42+530,i9*45+200,0,0,2);
+                criaElemento.newObstaculoSup(i9*42+510,i9*45+200,0,0,2);
                 i9++
-            } while (i9<5);
+            } while (i9<6);
             let i10=0;
             do {
-                criaElemento.newObstaculoSup(770,i10*45+150,0,0,2);
+                criaElemento.newObstaculoSup(765,i10*45+100,0,0,2);
                 i10++
-            } while (i10<5);
+            } while (i10<6);
             let i11=0;
             do {
-                criaElemento.newObstaculoSup(975-i11*42,i11*45+247,0,0,2);
+                criaElemento.newObstaculoSup(900-i11*42,i11*45+335,0,0,2);
                 i11++
-            } while (i11<4);
+            } while (i11<3);
 
-            criaElemento.newObstaculoSup(975,200,0,0,2);
-            //criaElemento.newObstaculoSup(1*42+10,195,0,0,2);
-            //criaElemento.newObstaculoSup(2*42+10,240,0,0,2);
+            criaElemento.newObstaculoSup(900,285,0,0,2);
+            criaElemento.newObstaculoSup(900,240,0,0,2);
+            criaElemento.newObstaculoSup(900,185,0,0,2);
+            criaElemento.newObstaculoSup(900,140,0,0,2);
+            criaElemento.newObstaculoSup(940,140,0,0,2);
+            criaElemento.newObstaculoSup(986,210,0,0,2);
+            criaElemento.newObstaculoSup(1024,210,0,0,2);
+           
+            criaElemento.newObstaculoSup(940,285,0,0,2);
+            criaElemento.newObstaculoSup(986,365,0,0,2);
+            criaElemento.newObstaculoSup(1024,365,0,0,2);
 
 
     });
