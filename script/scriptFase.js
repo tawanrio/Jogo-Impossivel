@@ -54,7 +54,7 @@ document.getElementById('jogar').addEventListener('click', function(){
 
 
   //altera a linha aqui para mudar a fase
-  nivel7();
+  nivel1();
 
 
   iniciar();
